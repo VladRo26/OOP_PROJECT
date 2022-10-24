@@ -1,9 +1,9 @@
-# OOP Template
+# Turis Gavriil-Vlad
 
 ### Tema 0
 
-- [ ] Nume proiect (îl puteți schimba ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
+- [ ] COFETARIE
+- [ ] Functionatilatile de baza ale unei cofetarii.
 
 ## Tema 1
 
