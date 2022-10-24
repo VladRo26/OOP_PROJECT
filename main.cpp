@@ -41,7 +41,7 @@ private:
     bool EDulce;
 public:
     Produs(const string& nume_,const vector<Ingredient>& ingrediente_,float pret_,bool depost_,bool esarat_,bool edulce_):Nume_Produs{nume_},Ingrediente{ingrediente_},Pret{pret_},DePost{depost_},ESarat{esarat_},EDulce{edulce_}{}
-    Produs(const Produs& other):Nume_Produs{other.Nume_Produs},Ingrediente{other.Ingrediente},Pret{other.Pret},ESarat{other.ESarat},EDulce{other.EDulce}{}
+    Produs(const Produs& other):Nume_Produs{other.Nume_Produs},Ingrediente{other.Ingrediente},Pret{other.Pret},DePost{other.DePost},ESarat{other.ESarat},EDulce{other.EDulce}{}
     Produs& operator=(const Produs& other)
     {
         Nume_Produs=other.Nume_Produs;
@@ -141,25 +141,25 @@ std::ostream& operator<<(std::ostream& cof,const Cofetarie& c1)
     return cof;
 }
 int main() {
-//    Ingredient sare= Ingredient("sare",50);
-//    Ingredient zahar= Ingredient("zahar",100);
-//    Ingredient sirop1=Ingredient("sirop de ciocolata",100);
-//    vector<Ingredient> v1;
-//    v1.push_back(sare);
-//    v1.push_back(zahar);
-//    v1.push_back(sirop1);
-//    Angajat a1= Angajat("Turis","Cofetar",1,5000);
-//    Angajat a2= Angajat("William","Vanzator",0,3000);
-//    vector<Angajat> v2;
-//    v2.push_back(a1);
-//    v2.push_back(a2);
-//    Produs savarina= Produs("savarina",v1,10.50,0,0,1);
-//    Produs amandina= Produs("amandina",v1,9.50,1,0,1);
-//    vector<Produs> v3;
-//    v3.push_back(savarina);
-//    v3.push_back(amandina);
-//    Cofetarie cofetarie1 = Cofetarie("Bon-Bon",v2,v3);
-//    std::cout<<cofetarie1;
+    Ingredient sare= Ingredient("sare",50);
+    Ingredient zahar= Ingredient("zahar",100);
+    Ingredient sirop1=Ingredient("sirop de ciocolata",100);
+    vector<Ingredient> v1;
+    v1.push_back(sare);
+    v1.push_back(zahar);
+    v1.push_back(sirop1);
+    Angajat a1= Angajat("Turis","Cofetar",1,5000);
+    Angajat a2= Angajat("William","Vanzator",0,3000);
+    vector<Angajat> v2;
+    v2.push_back(a1);
+    v2.push_back(a2);
+    Produs savarina= Produs("savarina",v1,10.50,0,0,1);
+    Produs amandina= Produs("amandina",v1,9.50,1,0,1);
+    vector<Produs> v3;
+    v3.push_back(savarina);
+    v3.push_back(amandina);
+    Cofetarie cofetarie1 = Cofetarie("Bon-Bon",v2,v3);
+    std::cout<<cofetarie1;
 
 return 0;
 }
