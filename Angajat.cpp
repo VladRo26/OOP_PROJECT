@@ -28,21 +28,19 @@ std::ostream &operator<<(std::ostream &ang, const Angajat &a1) {
     return ang;
 }
 
-bool Angajat::EligibilMarire(const Angajat &other) {
-    if (other.Experienta > 2) {
-        return 1;
-    } else
-        return 0;
+bool Angajat::EligibilMarire() {
+    if (Experienta > 2) {
+        return true;
+    } else { return false; }
 }
 
-void Angajat::CereMarireSalariu(Angajat &other, float procent) {
-    if (EligibilMarire(other) == 1) {
-        other.Salariu = other.Salariu + other.Salariu * (procent) / 100;
+void Angajat::CereMarireSalariu(float procent) {
+    if (EligibilMarire() == 1) {
+        Salariu = Salariu + Salariu * (procent) / 100;
+        std::cout << "Noul salariu este:" << Salariu;
     } else {
         std::cout << "Nu se accepta marirea!";
     }
-
-
 }
 
 

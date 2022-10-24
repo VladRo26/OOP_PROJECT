@@ -31,9 +31,9 @@ public:
 
     friend std::ostream &operator<<(std::ostream &, const Angajat &);
 
-    bool EligibilMarire(const Angajat &);
+    bool EligibilMarire();
 
-    void CereMarireSalariu(Angajat &, float procent);
+    void CereMarireSalariu(float procent);
 
 
 };

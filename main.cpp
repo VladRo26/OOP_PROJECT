@@ -5,6 +5,7 @@
 #include "Produs.h"
 #include "Cofetarie.h"
 
+
 using std::endl;
 using std::string;
 using std::vector;
@@ -30,7 +31,6 @@ int main() {
     v3.push_back(amandina);
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3);
     std::cout << cofetarie1;
-
-
+    a1.CereMarireSalariu(10);
     return 0;
 }
