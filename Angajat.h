@@ -19,8 +19,9 @@ private:
     string Post;
     bool ECalificat;
     float Salariu;
+    int Experienta;
 public:
-    Angajat(const string &nume_, const string &post_, bool ecalificat_, float salariu_);
+    Angajat(const string &nume_, const string &post_, bool ecalificat_, float salariu_, int experienta_);
 
     Angajat(const Angajat &other);
 
@@ -29,6 +30,11 @@ public:
     ~Angajat() = default;
 
     friend std::ostream &operator<<(std::ostream &, const Angajat &);
+
+    bool EligibilMarire(const Angajat &);
+
+    void CereMarireSalariu(Angajat &, float procent);
+
 
 };
 
