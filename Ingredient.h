@@ -28,6 +28,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &ing, const Ingredient &i1);
 
+
 };
 
 #endif //OOP_INGREDIENT_H
