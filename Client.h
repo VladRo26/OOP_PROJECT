@@ -17,7 +17,7 @@ private:
     string Nume_Client;
     int Numar_Comenzi;
 public:
-    Client(const string &nume_client_);
+    Client(const string &nume_client_, int numar_comenzi);
 
     Client(const Client &other);
 
