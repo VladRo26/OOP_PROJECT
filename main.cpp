@@ -24,13 +24,16 @@ int main() {
     vector<Angajat> v2;
     v2.push_back(a1);
     v2.push_back(a2);
-    Produs savarina = Produs("savarina", v1, 10.50, 0, 0, 1);
-    Produs amandina = Produs("amandina", v1, 9.50, 1, 0, 1);
+    Produs savarina = Produs("savarina", v1, 10.50, 0, 0, 1, 10);
+    Produs amandina = Produs("amandina", v1, 9.50, 1, 0, 1, 9);
     vector<Produs> v3;
     v3.push_back(savarina);
     v3.push_back(amandina);
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3);
     std::cout << cofetarie1;
     a1.CereMarireSalariu(10);
+    a2.CereMarireSalariu(90);
+
+
     return 0;
 }

@@ -22,9 +22,10 @@ private:
     bool DePost;
     bool ESarat;
     bool EDulce;
+    int Cantitate;
 public:
     Produs(const string &nume_, const vector<Ingredient> &ingrediente_, float pret_, bool depost_, bool esarat_,
-           bool edulce_);
+           bool edulce_, int cantitate_);
 
     Produs(const Produs &other);
 

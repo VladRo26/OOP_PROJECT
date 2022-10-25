@@ -37,9 +37,9 @@ bool Angajat::EligibilMarire() {
 void Angajat::CereMarireSalariu(float procent) {
     if (EligibilMarire() == 1) {
         Salariu = Salariu + Salariu * (procent) / 100;
-        std::cout << "Noul salariu este:" << Salariu;
+        std::cout << "Noul salariu este:" << Salariu << endl;
     } else {
-        std::cout << "Nu se accepta marirea!";
+        std::cout << "Nu se accepta marirea!" << endl;
     }
 }
 
