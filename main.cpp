@@ -34,7 +34,7 @@ int main() {
     std::cout << cofetarie1;
     a1.CereMarireSalariu(10);
     a2.CereMarireSalariu(90);
-    Client c1 = Client("Levi");
+    Client c1 = Client("Levi", 1);
     std::cout << c1;
 
 
