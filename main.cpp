@@ -4,6 +4,7 @@
 #include "Angajat.h"
 #include "Produs.h"
 #include "Cofetarie.h"
+#include "Client.h"
 
 
 using std::endl;
@@ -33,6 +34,8 @@ int main() {
     std::cout << cofetarie1;
     a1.CereMarireSalariu(10);
     a2.CereMarireSalariu(90);
+    Client c1 = Client("Levi");
+    std::cout << c1;
 
 
     return 0;
