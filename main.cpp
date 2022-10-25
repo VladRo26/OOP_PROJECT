@@ -30,8 +30,8 @@ int main() {
     vector<Produs> v3;
     v3.push_back(savarina);
     v3.push_back(amandina);
-//    a1.CereMarireSalariu(10);
-//    a2.CereMarireSalariu(90);
+    a1.CereMarireSalariu(10);
+    a2.CereMarireSalariu(90);
     Client c1 = Client("Levi", 0);
     Client c2 = Client("Mihai", 0);
     vector<Client> v4;

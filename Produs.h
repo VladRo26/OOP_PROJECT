@@ -35,6 +35,8 @@ public:
     ~Produs() = default;
 
     friend std::ostream &operator<<(std::ostream &, const Produs &);
+//    friend class Client;
+
 
 };
 

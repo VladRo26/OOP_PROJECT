@@ -28,11 +28,9 @@ public:
 
     ~Client() = default;
 
-
-
+//    void Comanda_produs(Produs& prod,int cantitate_);
 
     friend std::ostream &operator<<(std::ostream &cl, const Client &);
-
 
 };
 

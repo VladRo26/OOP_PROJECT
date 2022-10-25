@@ -35,3 +35,4 @@ std::ostream &operator<<(std::ostream &prod, const Produs &p1) {
     prod << endl;
     return prod;
 }
+
