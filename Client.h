@@ -15,7 +15,7 @@ using std::vector;
 class Client {
 private:
     string Nume_Client;
-    int Numar_Comenzi;
+    int Numar_Comenzi = 0;
 public:
     Client(const string &nume_client_, int numar_comenzi_ = 0);
 
