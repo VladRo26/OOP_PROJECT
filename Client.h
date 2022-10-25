@@ -1,6 +1,11 @@
 //
 // Created by turis on 10/25/2022.
 //
+
+
+#ifndef OOP_CLIENT_H
+#define OOP_CLIENT_H
+
 #include <iostream>
 #include <vector>
 #include "Produs.h"
@@ -8,9 +13,6 @@
 using std::endl;
 using std::string;
 using std::vector;
-
-#ifndef OOP_CLIENT_H
-#define OOP_CLIENT_H
 
 
 class Client {
