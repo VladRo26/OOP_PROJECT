@@ -15,9 +15,9 @@ using std::vector;
 class Client {
 private:
     string Nume_Client;
-    int Numar_Comenzi = 0;
+    int Numar_Comenzi;
 public:
-    Client(const string &nume_client_, int numar_comenzi_ = 0);
+    Client(const string &nume_client_, int numar_comenzi_);
 
     Client(const Client &other);
 
