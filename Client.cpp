@@ -8,8 +8,8 @@ using std::endl;
 using std::string;
 using std::vector;
 
-Client::Client(const string &nume_client_, int numar_comenzi_ = 0) : Nume_Client{nume_client_},
-                                                                     Numar_Comenzi{numar_comenzi_} {}
+Client::Client(const string &nume_client_, int numar_comenzi_) : Nume_Client{nume_client_},
+                                                                 Numar_Comenzi{numar_comenzi_} {}
 
 Client::Client(const Client &other) : Nume_Client{other.Nume_Client}, Numar_Comenzi{other.Numar_Comenzi} {}
 
