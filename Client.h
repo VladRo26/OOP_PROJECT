@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <vector>
+#include "Produs.h"
 
 using std::endl;
 using std::string;
@@ -24,6 +25,9 @@ public:
     Client &operator=(const Client &other);
 
     ~Client() = default;
+
+
+
 
     friend std::ostream &operator<<(std::ostream &cl, const Client &);
 

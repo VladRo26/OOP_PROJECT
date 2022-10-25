@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "Ingredient.h"
+#include "Client.h"
 
 using std::endl;
 using std::string;

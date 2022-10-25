@@ -28,3 +28,8 @@ Client::Client(const string &nume_client_, int numar_comenzi_) : Nume_Client{num
                                                                  Numar_Comenzi{numar_comenzi_} {
 
 }
+
+
+
+
+

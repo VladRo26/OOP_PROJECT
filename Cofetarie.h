@@ -10,6 +10,7 @@
 #include "Ingredient.h"
 #include "Angajat.h"
 #include "Produs.h"
+#include "Client.h"
 
 
 class Cofetarie {
@@ -17,8 +18,10 @@ private:
     string Nume_Cofetarie;
     vector<Angajat> Angajati;
     vector<Produs> Produse;
+    vector<Client> Clienti;
 public:
-    Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs> &produse_);
+    Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs> &produse_,
+              const vector<Client> &clienti_);
 
     Cofetarie(const Cofetarie &other);
 
@@ -27,6 +30,7 @@ public:
     ~Cofetarie() = default;
 
     friend std::ostream &operator<<(std::ostream &, const Cofetarie &);
+
 };
 
 
