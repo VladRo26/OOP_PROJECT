@@ -13,6 +13,7 @@
 using std::endl;
 using std::string;
 using std::vector;
+class Produs;
 
 
 class Client {
@@ -28,9 +29,9 @@ public:
 
     ~Client() = default;
 
-//    void Comanda_produs(Produs& prod,int cantitate_);
+    void Comanda_produs(Produs &prod, int cantitate_);
 
-    friend std::ostream &operator<<(std::ostream &cl, const Client &);
+    friend std::ostream &operator<<(std::ostream &, const Client &);
 
 };
 
