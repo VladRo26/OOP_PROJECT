@@ -34,7 +34,7 @@ std::ostream &operator<<(std::ostream &cof, const Cofetarie &c1) {
         cof << i;
     }
     cof << "Produse:" << endl;
-    for (const auto j: c1.Produse) {
+    for (auto j: c1.Produse) {
         cof << *j;
     }
     cof << "Clienti:" << endl;
