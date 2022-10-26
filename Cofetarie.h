@@ -20,7 +20,7 @@ private:
     vector<Produs *> Produse;
     vector<Client> Clienti;
 public:
-    Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs *> produse_,
+    Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs *> &produse_,
               const vector<Client> &clienti_);
 
     Cofetarie(const Cofetarie &other);

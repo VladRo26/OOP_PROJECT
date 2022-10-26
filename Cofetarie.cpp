@@ -9,7 +9,7 @@ using std::string;
 using std::vector;
 
 
-Cofetarie::Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs *> produse_,
+Cofetarie::Cofetarie(const string &nume_, const vector<Angajat> &angajati_, const vector<Produs *> &produse_,
                      const vector<Client> &clienti_)
         : Nume_Cofetarie{nume_}, Angajati{angajati_}, Produse{produse_}, Clienti{clienti_} {}
 
