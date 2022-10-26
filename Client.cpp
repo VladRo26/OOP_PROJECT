@@ -38,7 +38,7 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_) {
     } else {
         prod_.Cantitate = prod_.Cantitate - cantitate_;
         Numar_Comenzi++;
-        std::cout << "Totalul de plata este: " << prod_.Pret * float(cantitate_);
+        std::cout << "Totalul de plata este: " << prod_.Pret * float(cantitate_) << endl;
     }
 
 }
