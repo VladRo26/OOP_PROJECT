@@ -34,7 +34,7 @@ Client::Client(const string &nume_client_, int numar_comenzi_) : Nume_Client{num
 void Client::Comanda_produs(Produs &prod_, int cantitate_) {
     if (cantitate_ > prod_.Cantitate) {
         std::cout << "Nu avem destule produse pe stock pentru aceasta comanda! Numarul maxim este de :"
-                  << prod_.Cantitate;
+                  << prod_.Cantitate << endl;
     } else {
         prod_.Cantitate = prod_.Cantitate - cantitate_;
         Numar_Comenzi++;

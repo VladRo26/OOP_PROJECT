@@ -30,19 +30,19 @@ int main() {
     vector<Produs> v3;
     v3.push_back(savarina);
     v3.push_back(amandina);
-//    a1.CereMarireSalariu(10);
-//    a2.CereMarireSalariu(90);
+    a1.CereMarireSalariu(10);
+    a2.CereMarireSalariu(90);
     Client c1 = Client("Levi", 0);
     Client c2 = Client("Mihai", 0);
     vector<Client> v4;
     v4.push_back(c1);
     v4.push_back(c2);
+    c1.Comanda_produs(savarina, 5);
+    c1.Comanda_produs(savarina, 5);
+    c1.Comanda_produs(savarina, 5);
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
 
-//    std::cout << cofetarie1;
-    std::cout << savarina;
-    c1.Comanda_produs(savarina, 5);
-    std::cout << savarina;
+    std::cout << cofetarie1;
 
 
     return 0;
