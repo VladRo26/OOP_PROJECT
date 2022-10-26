@@ -27,9 +27,9 @@ int main() {
     v2.push_back(a2);
     Produs savarina = Produs("savarina", v1, 10.50, 0, 0, 1, 10);
     Produs amandina = Produs("amandina", v1, 9.50, 1, 0, 1, 9);
-    vector<Produs> v3;
-    v3.push_back(savarina);
-    v3.push_back(amandina);
+    vector<Produs *> v3;
+    v3.push_back(&savarina);
+    v3.push_back(&amandina);
     a1.CereMarireSalariu(10);
     a2.CereMarireSalariu(90);
     Client c1 = Client("Levi", 0);
@@ -41,7 +41,11 @@ int main() {
     c1.Comanda_produs(savarina, 5);
     c1.Comanda_produs(savarina, 5);
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
-
+//    for(auto &i:v3)
+//    {
+//        std::cout<<*i;
+//    }
+//    std::cout<<savarina;
     std::cout << cofetarie1;
 
 
