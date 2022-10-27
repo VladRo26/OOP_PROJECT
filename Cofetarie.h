@@ -18,10 +18,10 @@ private:
     string Nume_Cofetarie;
     vector<Angajat *> Angajati;
     vector<Produs *> Produse;
-    vector<Client> Clienti;
+    vector<Client *> Clienti;
 public:
     Cofetarie(const string &nume_, const vector<Angajat *> &angajati_, const vector<Produs *> &produse_,
-              const vector<Client> &clienti_);
+              const vector<Client *> &clienti_);
 
     Cofetarie(const Cofetarie &other);
 

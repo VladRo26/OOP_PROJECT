@@ -10,7 +10,7 @@ using std::vector;
 
 
 Cofetarie::Cofetarie(const string &nume_, const vector<Angajat *> &angajati_, const vector<Produs *> &produse_,
-                     const vector<Client> &clienti_)
+                     const vector<Client *> &clienti_)
         : Nume_Cofetarie{nume_}, Angajati{angajati_}, Produse{produse_}, Clienti{clienti_} {}
 
 Cofetarie::Cofetarie(const Cofetarie &other)
@@ -39,7 +39,7 @@ std::ostream &operator<<(std::ostream &cof, const Cofetarie &c1) {
     }
     cof << "Clienti:" << endl;
     for (const auto &y: c1.Clienti) {
-        cof << y;
+        cof << *y;
     }
     return cof;
 }
