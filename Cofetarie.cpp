@@ -38,7 +38,7 @@ std::ostream &operator<<(std::ostream &cof, const Cofetarie &c1) {
         cof << *j;
     }
     cof << "Clienti:" << endl;
-    for (const auto &y: c1.Clienti) {
+    for (const auto *y: c1.Clienti) {
         cof << *y;
     }
     return cof;
