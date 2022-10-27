@@ -22,9 +22,9 @@ int main() {
     v1.push_back(sirop1);
     Angajat a1 = Angajat("Turis", "Cofetar", 1, 5000, 3);
     Angajat a2 = Angajat("William", "Vanzator", 0, 3000, 1);
-    vector<Angajat> v2;
-    v2.push_back(a1);
-    v2.push_back(a2);
+    vector<Angajat *> v2;
+    v2.push_back(&a1);
+    v2.push_back(&a2);
     Produs savarina = Produs("savarina", v1, 10.50, 0, 0, 1, 10);
     Produs amandina = Produs("amandina", v1, 9.50, 1, 0, 1, 9);
     vector<Produs *> v3;
@@ -37,10 +37,11 @@ int main() {
     vector<Client> v4;
     v4.push_back(c1);
     v4.push_back(c2);
-    c1.Comanda_produs(savarina, 5);
-    c1.Comanda_produs(savarina, 5);
-    c1.Comanda_produs(savarina, 5);
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
+    std::cout << cofetarie1;
+    c1.Comanda_produs(savarina, 5);
+    c1.Comanda_produs(savarina, 5);
+    c1.Comanda_produs(savarina, 5);
 //    for(auto &i:v3)
 //    {
 //        std::cout<<*i;
