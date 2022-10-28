@@ -4,6 +4,7 @@
 
 #include "Produs.h"
 
+
 Produs::Produs(const string &nume_, const vector<Ingredient> &ingrediente_, float pret_, bool depost_, bool esarat_,
                bool edulce_, int cantitate_)
         : Nume_Produs{nume_}, Ingrediente{ingrediente_}, Pret{pret_}, DePost{depost_}, ESarat{esarat_},
@@ -35,4 +36,10 @@ std::ostream &operator<<(std::ostream &prod, const Produs &p1) {
     prod << endl;
     return prod;
 }
+
+
+
+
+
+
 

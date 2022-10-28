@@ -35,7 +35,22 @@ public:
     ~Produs() = default;
 
     friend std::ostream &operator<<(std::ostream &, const Produs &);
-    friend class Client;
+
+    float Get_Pret() {
+        return Pret;
+    }
+
+    string Get_Nume() {
+        return Nume_Produs;
+    }
+
+    int Get_Cantitate() {
+        return Cantitate;
+    }
+
+    void Set_Cantitate(int cantitate_) {
+        Cantitate = cantitate_;
+    }
 
 
 };

@@ -7,10 +7,13 @@
 
 #include <iostream>
 #include <vector>
+#include "Produs.h"
 
 using std::endl;
 using std::string;
 using std::vector;
+
+class Produs;
 
 
 class Angajat {
@@ -35,6 +38,7 @@ public:
 
     void CereMarireSalariu(float procent);
 
+    void Verificare_Stock_Produs(Produs &prod_);
 
 };
 

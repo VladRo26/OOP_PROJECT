@@ -9,11 +9,15 @@
 #include <iostream>
 #include <vector>
 #include "Produs.h"
+#include "Cofetarie.h"
 
 using std::endl;
 using std::string;
 using std::vector;
+
 class Produs;
+
+class Cofetarie;
 
 
 class Client {
@@ -29,7 +33,7 @@ public:
 
     ~Client() = default;
 
-    void Comanda_produs(Produs &prod, int cantitate_);
+    void Comanda_produs(Produs &prod, int cantitate_, Cofetarie &);
 
     friend std::ostream &operator<<(std::ostream &, const Client &);
 

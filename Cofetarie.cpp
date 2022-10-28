@@ -44,3 +44,14 @@ std::ostream &operator<<(std::ostream &cof, const Cofetarie &c1) {
     return cof;
 }
 
+Produs *Cofetarie::Cauta_Prod(const string &num_) {
+    for (auto &element: Produse) {
+        if (num_ == element->Get_Nume()) {
+            return element;
+        }
+    }
+    return nullptr;
+}
+
+
+

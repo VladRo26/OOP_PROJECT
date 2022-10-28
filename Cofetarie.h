@@ -12,6 +12,11 @@
 #include "Produs.h"
 #include "Client.h"
 
+class Client;
+
+class Angajat;
+
+class Produs;
 
 class Cofetarie {
 private:
@@ -30,6 +35,9 @@ public:
     ~Cofetarie() = default;
 
     friend std::ostream &operator<<(std::ostream &, const Cofetarie &);
+
+    Produs *Cauta_Prod(const string &num_);
+
 
 };
 
