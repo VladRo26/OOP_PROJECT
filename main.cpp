@@ -30,9 +30,9 @@ int main() {
     v1_2.push_back(sare);
     v1_2.push_back(faina);
     ///Initializare ingrediente si vector ingrediente
-    Angajat a1 = Angajat("Turis", "Cofetar", 1, 5000, 3);
-    Angajat a2 = Angajat("William", "Vanzator", 0, 3000, 1);
-    Angajat a3 = Angajat("Tudor", "Ajutor bucatar", 0, 2000, 1);
+    Angajat a1 = Angajat("Turis", "Cofetar", 1, 5000, 1, 5);
+    Angajat a2 = Angajat("William", "Vanzator", 0, 3000, 1, 0);
+    Angajat a3 = Angajat("Tudor", "Ajutor bucatar", 0, 2000, 1, 0);
     vector<Angajat *> v2;
     v2.push_back(&a1);
     v2.push_back(&a2);
@@ -58,7 +58,7 @@ int main() {
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
     std::cout << cofetarie1;
     a1.Verificare_Stock_Produs(amandina);
-    a1.CereMarireSalariu(10);
+    a1.CereMarireSalariu(15);
     c1.Comanda_produs(savarina, 90, cofetarie1);
 
 

@@ -5,12 +5,14 @@
 #include "Angajat.h"
 
 
-Angajat::Angajat(const string &nume_, const string &post_, bool ecalificat_, float salariu_, int experienta_)
-        : Nume_Angajat{nume_}, Post{post_}, ECalificat{ecalificat_}, Salariu{salariu_}, Experienta{experienta_} {}
+Angajat::Angajat(const string &nume_, const string &post_, bool ecalificat_, float salariu_, int experienta_,
+                 int nr_vanzari)
+        : Nume_Angajat{nume_}, Post{post_}, ECalificat{ecalificat_}, Salariu{salariu_}, Experienta{experienta_},
+          Nr_vanzari{nr_vanzari} {}
 
 Angajat::Angajat(const Angajat &other)
         : Nume_Angajat(other.Nume_Angajat), Post{other.Post}, ECalificat{other.ECalificat}, Salariu{other.Salariu},
-          Experienta{other.Experienta} {}
+          Experienta{other.Experienta}, Nr_vanzari{other.Nr_vanzari} {}
 
 Angajat &Angajat::operator=(const Angajat &other) {
     Nume_Angajat = other.Nume_Angajat;
@@ -18,29 +20,88 @@ Angajat &Angajat::operator=(const Angajat &other) {
     ECalificat = other.ECalificat;
     Salariu = other.Salariu;
     Experienta = other.Experienta;
+    Nr_vanzari = other.Nr_vanzari;
     return *this;
 }
 
 std::ostream &operator<<(std::ostream &ang, const Angajat &a1) {
     ang << "Nume angajat:" << " " << a1.Nume_Angajat << " " << "Post:" << " " << a1.Post << " " << "Salariu:" << " "
         << a1.Salariu << " " << "E calificat?: " << a1.ECalificat << " " << "Expreienta:" << " " << a1.Experienta
+        << "Numar Vanzari:" << " " << a1.Nr_vanzari
         << endl;
     ang << endl;
     return ang;
 }
 
-bool Angajat::EligibilMarire() {
-    if (Experienta > 2) {
-        return true;
-    } else { return false; }
+bool Angajat::EligibilMarire(float &proc) {
+    int optiune = 0;
+    if (proc <= 10 && Nr_vanzari >= 2)
+        return 1;
+    else if (proc <= 15 && Nr_vanzari >= 5)
+        return 1;
+    else if (proc > 15 && Nr_vanzari >= 10) {
+        if (Experienta <= 2) {
+            std::cout << "Nu ai destula experienta capatata, va trebui sa mai astepti " << 2 - Experienta
+                      << "ani.Se poate oferi maxim o marire de 15 procente" << std::endl;
+            std::cout << "Accepti marirea de 15 procente? (1.Da/2.Nu)";
+            std::cin >> optiune;
+            switch (optiune) {
+                case 1:
+                    proc = 15;
+                    return 1;
+                case 2:
+                    return 0;
+            }
+        } else if (proc <= 30) {
+            return 1;
+        } else if (proc > 30 && proc < 50) {
+            if (Nr_vanzari >= 20) {
+                return 1;
+            } else {
+                std::cout
+                        << "Pentru a se accepta o marire de peste 30 de procente trebuie sa ai mai mult de 20 de vanzari, mai ai de facut"
+                        << 20 - Nr_vanzari << "maximul care se poate oferi este de 30 de procente" << std::endl;
+                std::cout << "Accepti marirea de 30 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc = 30;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            }
+        } else if (proc >= 50) {
+            if (Experienta <= 5) {
+                std::cout
+                        << "Pentru o marire de peste 50 de procente iti trebuie minim 5 ani experienta, mai ai de asteptat"
+                        << 5 - Experienta << "ani, mairea maxima care se poate oferi este de 50 de procente";
+                std::cout << "Accepti marirea de 50 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc = 50;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            } else
+                return 1;
+        }
+    }
+    return 0;
 }
 
 void Angajat::CereMarireSalariu(float procent) {
-    if (EligibilMarire() == 1) {
+    if (EligibilMarire(procent) == 1) {
         Salariu = Salariu + Salariu * (procent) / 100;
         std::cout << "Noul salariu este:" << Salariu << endl;
     } else {
-        std::cout << "Nu se accepta marirea!" << endl;
+        std::cout << "Marirea nu a fost facuta!" << endl;
     }
 }
 
@@ -66,8 +127,6 @@ void Angajat::Verificare_Stock_Produs(Produs &prod_) {
                 std::cout << "Mai asteptam pana vom primi din nou produsul!";
         }
     }
-
-
 }
 
 
