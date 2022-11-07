@@ -33,26 +33,26 @@ int main() {
     Angajat a1 = Angajat("Turis", "Cofetar", 1, 5000, 1, 5);
     Angajat a2 = Angajat("William", "Vanzator", 0, 3000, 1, 0);
     Angajat a3 = Angajat("Tudor", "Ajutor bucatar", 0, 2000, 1, 0);
-    vector<Angajat *> v2;
-    v2.push_back(&a1);
-    v2.push_back(&a2);
-    v2.push_back(&a3);
+    vector<Angajat> v2;
+    v2.push_back(a1);
+    v2.push_back(a2);
+    v2.push_back(a3);
     ///Initializare angajati si vector angajati
     Produs savarina = Produs("savarina", v1, 10.50, 1, 0, 1, 20);
     Produs amandina = Produs("amandina", v1_1, 9.50, 0, 0, 1, 0);
     Produs saratele = Produs("saratele", v1_2, 5.50, 1, 1, 0, 30);
-    vector<Produs *> v3;
-    v3.push_back(&savarina);
-    v3.push_back(&amandina);
-    v3.push_back(&saratele);
+    vector<Produs> v3;
+    v3.push_back(savarina);
+    v3.push_back(amandina);
+    v3.push_back(saratele);
     ///Initializare produse si vector de produse
     Client c1 = Client("Levi", 0);
     Client c2 = Client("Mihai", 0);
     Client c3 = Client("Paniti", 0);
-    vector<Client *> v4;
-    v4.push_back(&c1);
-    v4.push_back(&c2);
-    v4.push_back(&c3);
+    vector<Client> v4;
+    v4.push_back(c1);
+    v4.push_back(c2);
+    v4.push_back(c3);
     ///Afisare Cofetarie la inceputul afacerii
     std::cout << endl;
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);

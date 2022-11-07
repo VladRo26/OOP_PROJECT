@@ -62,7 +62,6 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
         Numar_Comenzi++;
         std::cout << "Totalul de plata este: " << prod_.Get_Pret() * float(cantitate_) << endl;
     }
-
 }
 
 
