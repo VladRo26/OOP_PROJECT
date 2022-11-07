@@ -114,7 +114,7 @@ void Angajat::Gestiune_Stoc_Produs(Produs &prod_) {
     if (prod_.Get_Cantitate() == 0) {
         std::cout << prod_.Get_Nume() << " nu mai este pe stoc!" << endl;
         std::cout << "Doriti sa lansez o comanda la furnizor? (Da 1/Nu 2)" << endl;
-        int Optiune;
+        int Optiune = 0;
         std::cin >> Optiune;
         switch (Optiune) {
             case 1:
