@@ -39,7 +39,7 @@ int main() {
     v2.push_back(&a3);
     ///Initializare angajati si vector angajati
     Produs savarina = Produs("savarina", v1, 10.50, 1, 0, 1, 20);
-    Produs amandina = Produs("amandina", v1_1, 9.50, 0, 0, 1, 15);
+    Produs amandina = Produs("amandina", v1_1, 9.50, 0, 0, 1, 0);
     Produs saratele = Produs("saratele", v1_2, 5.50, 1, 1, 0, 30);
     vector<Produs *> v3;
     v3.push_back(&savarina);
@@ -56,10 +56,10 @@ int main() {
     ///Afisare Cofetarie la inceputul afacerii
     std::cout << endl;
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
-    std::cout << cofetarie1;
-    a1.Verificare_Stoc_Produs(amandina);
-    a1.CereMarireSalariu(60);
-    c1.Comanda_produs(savarina, 90, cofetarie1);
+//    std::cout << cofetarie1;
+    a1.Gestiune_Stoc_Produs(amandina);
+//    a1.CereMarireSalariu(60);
+//    c1.Comanda_produs(savarina, 90, cofetarie1);
 
 
     return 0;

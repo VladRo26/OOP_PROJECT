@@ -107,7 +107,7 @@ void Angajat::CereMarireSalariu(float procent) {
     }
 }
 
-void Angajat::Verificare_Stoc_Produs(Produs &prod_) {
+void Angajat::Gestiune_Stoc_Produs(Produs &prod_) {
     if (prod_.Get_Cantitate() > 0) {
         std::cout << "Mai avem pe stoc " << prod_.Get_Cantitate() << " bucati" << endl;
     }
@@ -116,20 +116,29 @@ void Angajat::Verificare_Stoc_Produs(Produs &prod_) {
         std::cout << "Doriti sa lansez o comanda la furnizor? (Da 1/Nu 2)" << endl;
         int Optiune;
         std::cin >> Optiune;
-        int cantitate_;
         switch (Optiune) {
             case 1:
-                std::cout << "Ce cantitate doriti?" << endl;
-                std::cin >> cantitate_;
-                prod_.Set_Cantitate(cantitate_);
-                std::cout << "S-a comandat produsul " << prod_.Get_Nume() << " " << "in cantiate de " << cantitate_
-                          << endl;
+                Comanda_Furnizor(prod_);
                 break;
             case 2:
                 std::cout << "Mai asteptam pana vom primi din nou produsul!";
+                break;
+            default:
+                break;
         }
     }
 }
+
+void Angajat::Comanda_Furnizor(Produs &prod_) {
+    int cantitate = 0;
+    std::cout << "Ce cantitate doriti?" << endl;
+    std::cin >> cantitate;
+    prod_.Set_Cantitate(cantitate);
+    std::cout << "S-a comandat produsul " << prod_.Get_Nume() << " " << "in cantiate de " << cantitate
+              << endl;
+
+}
+
 
 
 
