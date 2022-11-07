@@ -34,7 +34,7 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
                   << prod_.Get_Cantitate() << endl;
         std::cout << "Doriti sa comandati alt produs sau doriti cantitatea de " << prod_.Get_Cantitate() << endl
                   << "1.Alt Produs/2.Cantitatea ramasa" << endl;
-        string num = "";
+        string num;
         int optiune_ = 0;
         int can = 0;
         Produs *p1 = nullptr;
