@@ -51,9 +51,11 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
                     std::cout << "Nu s-a gasit produsul";
                     return;
                 }
-                return Comanda_produs(*p1, can, c1);
+                Comanda_produs(*p1, can, c1);
+                break;
             case 2:
-                return Comanda_produs(prod_, prod_.Get_Cantitate(), c1);
+                Comanda_produs(prod_, prod_.Get_Cantitate(), c1);
+                break;
         }
     } else {
         prod_.Set_Cantitate(prod_.Get_Cantitate() - cantitate_);
