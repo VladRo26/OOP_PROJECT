@@ -2,10 +2,10 @@
 
 ### Tema 1
 
-- [ ] Proiectul ales de mine pentru aceasta tema se numeste: Cofetarie
-- [ ] Am ales sa fac urmatoarele clase: cofetarie,angajat,produs,ingredient,client.
-- [ ] Am implementat urmatoarele functionalitati: verificarea unui angajat daca e eligibil de marire si marirea
-  salariului acestuia in caz ca se poate, verificarea stocului de catre angajati, iar clientii pot comanda produse.
+- Proiectul ales de mine pentru aceasta tema se numeste: Cofetarie
+- Am ales sa fac urmatoarele clase: cofetarie,angajat,produs,ingredient,client.
+- Am implementat urmatoarele functionalitati: verificarea unui angajat daca e eligibil de marire si marirea salariului
+  acestuia in caz ca se poate, verificarea stocului de catre angajati, iar clientii pot comanda produse.
 
 ## Tema 1
 
