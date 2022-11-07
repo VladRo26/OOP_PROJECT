@@ -25,16 +25,16 @@ Produs &Produs::operator=(const Produs &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &prod, const Produs &p1) {
-    prod << "Nume produs:" << " " << p1.Nume_Produs << " " << "Pret:" << " " << p1.Pret << " " << "E de post?:" << " "
-         << p1.DePost << " " << "E sarat?:" << " " << p1.ESarat << " " << "E dulce?" << " " << p1.EDulce << " "
-         << "Cantitate:" << " " << p1.Cantitate << endl;
-    prod << "Lista ingrediente:" << endl;
+std::ostream &operator<<(std::ostream &os, const Produs &p1) {
+    os << "Nume produs:" << " " << p1.Nume_Produs << " " << "Pret:" << " " << p1.Pret << " " << "E de post?:" << " "
+       << p1.DePost << " " << "E sarat?:" << " " << p1.ESarat << " " << "E dulce?" << " " << p1.EDulce << " "
+       << "Cantitate:" << " " << p1.Cantitate << endl;
+    os << "Lista ingrediente:" << endl;
     for (const auto &i: p1.Ingrediente) {
-        prod << i;
+        os << i;
     }
-    prod << endl;
-    return prod;
+    os << endl;
+    return os;
 }
 
 

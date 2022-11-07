@@ -14,9 +14,9 @@ Ingredient &Ingredient::operator=(const Ingredient &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &ing, const Ingredient &i1) {
-    ing << "Nume ingredient: " << i1.Nume_Ingredient << " " << "Cantitate: " << i1.Cantitate << endl;
-    return ing;
+std::ostream &operator<<(std::ostream &os, const Ingredient &i1) {
+    os << "Nume ingredient: " << i1.Nume_Ingredient << " " << "Cantitate: " << i1.Cantitate << endl;
+    return os;
 }
 
 

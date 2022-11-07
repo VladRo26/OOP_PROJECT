@@ -24,13 +24,13 @@ Angajat &Angajat::operator=(const Angajat &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &ang, const Angajat &a1) {
-    ang << "Nume angajat:" << " " << a1.Nume_Angajat << " " << "Post:" << " " << a1.Post << " " << "Salariu:" << " "
-        << a1.Salariu << " " << "E calificat?: " << a1.ECalificat << " " << "Expreienta:" << " " << a1.Experienta
-        << "Numar Vanzari:" << " " << a1.Nr_vanzari
-        << endl;
-    ang << endl;
-    return ang;
+std::ostream &operator<<(std::ostream &os, const Angajat &a1) {
+    os << "Nume angajat:" << " " << a1.Nume_Angajat << " " << "Post:" << " " << a1.Post << " " << "Salariu:" << " "
+       << a1.Salariu << " " << "E calificat?: " << a1.ECalificat << " " << "Expreienta:" << " " << a1.Experienta
+       << "Numar Vanzari:" << " " << a1.Nr_vanzari
+       << endl;
+    os << endl;
+    return os;
 }
 
 bool Angajat::EligibilMarire(float &proc) {

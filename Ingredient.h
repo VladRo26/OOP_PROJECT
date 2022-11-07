@@ -26,7 +26,7 @@ public:
 
     ~Ingredient() = default;
 
-    friend std::ostream &operator<<(std::ostream &ing, const Ingredient &i1);
+    friend std::ostream &operator<<(std::ostream &os, const Ingredient &i1);
 
 
 };

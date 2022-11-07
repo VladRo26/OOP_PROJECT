@@ -17,9 +17,9 @@ Client &Client::operator=(const Client &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &cl, const Client &c1) {
-    cl << "Nume Client: " << c1.Nume_Client << " " << "Numar Comenzi: " << c1.Numar_Comenzi << " " << endl;
-    return cl;
+std::ostream &operator<<(std::ostream &os, const Client &c1) {
+    os << "Nume Client: " << c1.Nume_Client << " " << "Numar Comenzi: " << c1.Numar_Comenzi << " " << endl;
+    return os;
 }
 
 Client::Client(const string &nume_client_, int numar_comenzi_) : Nume_Client{nume_client_},

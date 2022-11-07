@@ -27,21 +27,21 @@ Cofetarie &Cofetarie::operator=(const Cofetarie &other) {
 }
 
 
-std::ostream &operator<<(std::ostream &cof, const Cofetarie &c1) {
-    cof << "Nume:" << c1.Nume_Cofetarie << endl;
-    cof << "Angajati:" << endl;
+std::ostream &operator<<(std::ostream &os, const Cofetarie &c1) {
+    os << "Nume:" << c1.Nume_Cofetarie << endl;
+    os << "Angajati:" << endl;
     for (const auto *i: c1.Angajati) {
-        cof << *i;
+        os << *i;
     }
-    cof << "Produse:" << endl;
+    os << "Produse:" << endl;
     for (const auto *j: c1.Produse) {
-        cof << *j;
+        os << *j;
     }
-    cof << "Clienti:" << endl;
+    os << "Clienti:" << endl;
     for (const auto *y: c1.Clienti) {
-        cof << *y;
+        os << *y;
     }
-    return cof;
+    return os;
 }
 
 Produs *Cofetarie::Cauta_Prod(const string &num_) {
