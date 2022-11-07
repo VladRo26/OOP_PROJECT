@@ -30,8 +30,8 @@ std::ostream &operator<<(std::ostream &os, const Produs &p1) {
        << p1.DePost << " " << "E sarat?:" << " " << p1.ESarat << " " << "E dulce?" << " " << p1.EDulce << " "
        << "Cantitate:" << " " << p1.Cantitate << endl;
     os << "Lista ingrediente:" << endl;
-    for (const auto &i: p1.Ingrediente) {
-        os << i;
+    for (const auto &ingred: p1.Ingrediente) {
+        os << ingred;
     }
     os << endl;
     return os;
