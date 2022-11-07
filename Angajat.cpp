@@ -39,10 +39,11 @@ bool Angajat::EligibilMarire(float &proc) {
         return 1;
     else if (proc <= 15 && Nr_vanzari >= 5)
         return 1;
-    else if (proc > 15 && Nr_vanzari >= 10) {
-        if (Experienta <= 2) {
+    else if (proc > 15) {
+        if (Experienta <= 2 || Nr_vanzari < 10) {
             std::cout << "Nu ai destula experienta capatata, va trebui sa mai astepti " << 2 - Experienta
-                      << "ani.Se poate oferi maxim o marire de 15 procente" << std::endl;
+                      << "ani sau sa mai faci " << 10 - Nr_vanzari << " se poate oferi maxim o marire de 15 procente"
+                      << std::endl;
             std::cout << "Accepti marirea de 15 procente? (1.Da/2.Nu)";
             std::cin >> optiune;
             switch (optiune) {
@@ -59,8 +60,8 @@ bool Angajat::EligibilMarire(float &proc) {
                 return 1;
             } else {
                 std::cout
-                        << "Pentru a se accepta o marire de peste 30 de procente trebuie sa ai mai mult de 20 de vanzari, mai ai de facut"
-                        << 20 - Nr_vanzari << "maximul care se poate oferi este de 30 de procente" << std::endl;
+                        << "Pentru a se accepta o marire de peste 30 de procente trebuie sa ai mai mult de 20 de vanzari, mai ai de facut "
+                        << 20 - Nr_vanzari << " maximul care se poate oferi este de 30 de procente" << std::endl;
                 std::cout << "Accepti marirea de 30 de procente? (1.Da/2.Nu)";
                 std::cin >> optiune;
                 switch (optiune) {
@@ -74,10 +75,11 @@ bool Angajat::EligibilMarire(float &proc) {
                 }
             }
         } else if (proc >= 50) {
-            if (Experienta <= 5) {
+            if (Experienta <= 5 || Nr_vanzari < 30) {
                 std::cout
-                        << "Pentru o marire de peste 50 de procente iti trebuie minim 5 ani experienta, mai ai de asteptat"
-                        << 5 - Experienta << "ani, mairea maxima care se poate oferi este de 50 de procente";
+                        << "Pentru o marire de peste 50 de procente iti trebuie minim 5 ani experienta si minim 30 de vanzari, mai ai de asteptat "
+                        << 5 - Experienta << " ani, si de facut " << 30 - Nr_vanzari
+                        << " mairea maxima care se poate oferi este de 50 de procente";
                 std::cout << "Accepti marirea de 50 de procente? (1.Da/2.Nu)";
                 std::cin >> optiune;
                 switch (optiune) {

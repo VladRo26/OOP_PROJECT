@@ -58,7 +58,7 @@ int main() {
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
     std::cout << cofetarie1;
     a1.Verificare_Stock_Produs(amandina);
-    a1.CereMarireSalariu(15);
+    a1.CereMarireSalariu(60);
     c1.Comanda_produs(savarina, 90, cofetarie1);
 
 
