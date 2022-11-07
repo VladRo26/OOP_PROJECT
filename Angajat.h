@@ -40,7 +40,7 @@ public:
 
     void CereMarireSalariu(float procent);
 
-    void Verificare_Stock_Produs(Produs &prod_);
+    void Verificare_Stoc_Produs(Produs &prod_);
 
 };
 

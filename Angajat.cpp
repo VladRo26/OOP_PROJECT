@@ -107,12 +107,12 @@ void Angajat::CereMarireSalariu(float procent) {
     }
 }
 
-void Angajat::Verificare_Stock_Produs(Produs &prod_) {
+void Angajat::Verificare_Stoc_Produs(Produs &prod_) {
     if (prod_.Get_Cantitate() > 0) {
-        std::cout << "Mai avem pe stock " << prod_.Get_Cantitate() << " bucati" << endl;
+        std::cout << "Mai avem pe stoc " << prod_.Get_Cantitate() << " bucati" << endl;
     }
     if (prod_.Get_Cantitate() == 0) {
-        std::cout << prod_.Get_Nume() << " nu mai este pe stock!" << endl;
+        std::cout << prod_.Get_Nume() << " nu mai este pe stoc!" << endl;
         std::cout << "Doriti sa lansez o comanda la furnizor? (Da 1/Nu 2)" << endl;
         int Optiune;
         std::cin >> Optiune;
