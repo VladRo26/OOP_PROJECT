@@ -30,16 +30,16 @@ Cofetarie &Cofetarie::operator=(const Cofetarie &other) {
 std::ostream &operator<<(std::ostream &os, const Cofetarie &c1) {
     os << "Nume:" << c1.Nume_Cofetarie << endl;
     os << "Angajati:" << endl;
-    for (const auto *i: c1.Angajati) {
-        os << *i;
+    for (const auto *ang: c1.Angajati) {
+        os << *ang;
     }
     os << "Produse:" << endl;
-    for (const auto *j: c1.Produse) {
-        os << *j;
+    for (const auto *prod: c1.Produse) {
+        os << *prod;
     }
     os << "Clienti:" << endl;
-    for (const auto *y: c1.Clienti) {
-        os << *y;
+    for (const auto *cli: c1.Clienti) {
+        os << *cli;
     }
     return os;
 }
