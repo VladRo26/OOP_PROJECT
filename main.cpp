@@ -57,6 +57,7 @@ int main() {
     std::cout << endl;
     Cofetarie cofetarie1 = Cofetarie("Bon-Bon", v2, v3, v4);
     std::cout << cofetarie1;
+    a1.Gestiune_Stoc_Produs(savarina);
     cofetarie1.Cerere_Marire_Salariu(a1, 15);
     cofetarie1.Comanda_Prod(savarina, 50, c1);
     std::cout << cofetarie1;

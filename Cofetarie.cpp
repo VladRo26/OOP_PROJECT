@@ -54,7 +54,7 @@ bool Cofetarie::Cauta_Prod(const string &num_, Produs &p1) {
     return false;
 }
 
-void Cofetarie::Cerere_Marire_Salariu(Angajat &a, float procent) {
+void Cofetarie::Cerere_Marire_Salariu(const Angajat &a, float procent) {
     for (auto &ang: this->Angajati) {
         if (ang.Get_Nume() == a.Get_Nume()) {
             ang.CereMarireSalariu(procent);
