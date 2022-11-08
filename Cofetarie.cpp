@@ -48,10 +48,32 @@ bool Cofetarie::Cauta_Prod(const string &num_, Produs &p1) {
     for (auto &element: Produse) {
         if (num_ == element.Get_Nume()) {
             p1 = element;
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
+}
+
+void Cofetarie::Cerere_Marire_Salariu(Angajat &a, float procent) {
+    for (auto &ang: this->Angajati) {
+        if (ang.Get_Nume() == a.Get_Nume()) {
+            ang.CereMarireSalariu(procent);
+            return;
+        }
+    }
+}
+
+void Cofetarie::Comanda_Prod(Produs &produs_, int cantitate_, Client &c_) {
+    for (auto &client: this->Clienti) {
+        if (client.Get_Nume() == c_.Get_Nume()) {
+            for (auto &prod_: this->Produse) {
+                if (prod_.Get_Nume() == produs_.Get_Nume()) {
+                    client.Comanda_produs(prod_, cantitate_, *this);
+                }
+            }
+            return;
+        }
+    }
 }
 
 

@@ -129,6 +129,7 @@ void Angajat::Gestiune_Stoc_Produs(Produs &prod_) {
     }
 }
 
+
 void Angajat::Comanda_Furnizor(Produs &prod_) {
     int cantitate = 0;
     std::cout << "Ce cantitate doriti?" << endl;
@@ -137,6 +138,10 @@ void Angajat::Comanda_Furnizor(Produs &prod_) {
     std::cout << "S-a comandat produsul " << prod_.Get_Nume() << " " << "in cantiate de " << cantitate
               << endl;
 
+}
+
+const string &Angajat::Get_Nume() const {
+    return Nume_Angajat;
 }
 
 

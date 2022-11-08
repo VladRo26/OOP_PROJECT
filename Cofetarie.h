@@ -38,6 +38,10 @@ public:
 
     bool Cauta_Prod(const string &num_, Produs &p1);
 
+    void Cerere_Marire_Salariu(Angajat &a, float procent);
+
+    void Comanda_Prod(Produs &prod_, int cantitate_, Client &c_);
+
 
 };
 

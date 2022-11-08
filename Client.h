@@ -37,6 +37,10 @@ public:
 
     friend std::ostream &operator<<(std::ostream &, const Client &);
 
+    void Marire_Comenzi();
+
+    const string Get_Nume();
+
 };
 
 

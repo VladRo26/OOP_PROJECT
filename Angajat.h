@@ -34,6 +34,8 @@ public:
 
     ~Angajat() = default;
 
+    const string &Get_Nume() const;
+
     friend std::ostream &operator<<(std::ostream &, const Angajat &);
 
     bool EligibilMarire(float &proc);

@@ -52,7 +52,6 @@ public:
         Cantitate = cantitate_;
     }
 
-
 };
 
 #endif //OOP_PRODUS_H

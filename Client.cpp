@@ -28,6 +28,11 @@ Client::Client(const string &nume_client_, int numar_comenzi_) : Nume_Client{num
 }
 
 
+const string Client::Get_Nume() {
+    return Nume_Client;
+}
+
+
 void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
     if (cantitate_ > prod_.Get_Cantitate()) {
         std::cout << "Nu avem destule produse pe stock pentru aceasta comanda! Numarul maxim este de :"
@@ -61,6 +66,8 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
         std::cout << "Totalul de plata este: " << prod_.Get_Pret() * float(cantitate_) << endl;
     }
 }
+
+
 
 
 
