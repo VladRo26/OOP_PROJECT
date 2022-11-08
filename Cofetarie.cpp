@@ -44,13 +44,14 @@ std::ostream &operator<<(std::ostream &os, const Cofetarie &c1) {
     return os;
 }
 
-Produs *Cofetarie::Cauta_Prod(const string &num_) {
+bool Cofetarie::Cauta_Prod(const string &num_, Produs &p1) {
     for (auto &element: Produse) {
         if (num_ == element.Get_Nume()) {
-            return &element;
+            p1 = element;
+            return 1;
         }
     }
-    return nullptr;
+    return 0;
 }
 
 

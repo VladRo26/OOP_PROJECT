@@ -36,7 +36,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &, const Cofetarie &);
 
-    Produs *Cauta_Prod(const string &num_);
+    bool Cauta_Prod(const string &num_, Produs &p1);
 
 
 };

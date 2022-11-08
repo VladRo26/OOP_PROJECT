@@ -37,7 +37,6 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
         string num;
         int optiune_ = 0;
         int can = 0;
-        Produs *p1 = nullptr;
         std::cin >> optiune_;
         switch (optiune_) {
             case 1:
@@ -46,12 +45,11 @@ void Client::Comanda_produs(Produs &prod_, int cantitate_, Cofetarie &c1) {
                 std::cin >> num;
                 std::cout << "Caintiatea dorita: " << std::endl;
                 std::cin >> can;
-                p1 = c1.Cauta_Prod(num);
-                if (p1 == nullptr) {
+                if (c1.Cauta_Prod(num, prod_) == 1) {
+                    Comanda_produs(prod_, can, c1);
+                } else {
                     std::cout << "Nu s-a gasit produsul";
-                    return;
                 }
-                Comanda_produs(*p1, can, c1);
                 break;
             case 2:
                 Comanda_produs(prod_, prod_.Get_Cantitate(), c1);
