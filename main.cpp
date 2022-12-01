@@ -21,6 +21,9 @@ int main() {
     savarina.Add_Ingredient(zahar, 10);
     savarina.Add_Ingredient(faina, 50);
     savarina.Add_Ingredient(frisca, 100);
+    vector<std::shared_ptr<Produs>> vec_prod;
+    vec_prod.emplace_back(saratele.clone());
+    vec_prod.emplace_back(savarina.clone());
 //    std::cout<<saratele;
 //    std::cout<<savarina;
     ///Declarare Angajati
@@ -34,7 +37,7 @@ int main() {
 //    std::cout<<cl1;
 //    std::cout<<cl2;
     ///Declarare Cofetarie
-    Cofetarie cof1 = Cofetarie("Bon-Bon", {c1.clone(), v1.clone()}, {saratele.clone(), savarina.clone()},
+    Cofetarie cof1 = Cofetarie("Bon-Bon", {c1.clone(), v1.clone()}, vec_prod,
                                {cl1.clone(), cl2.clone()});
     std::cout << cof1;
 
