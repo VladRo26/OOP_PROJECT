@@ -30,6 +30,7 @@ Angajat::Angajat(const string &Post_, const string &Nume_Angajat_, bool ECalific
         : id(id_max), Post(std::move(Post_)), Nume_Angajat(std::move(Nume_Angajat_)), ECalificat(ECalificat_),
           Salariu(Salariu_), Expreienta(Experienta_) { id_max++; }
 
+
 void Cofetar::Angajat_afisare(std::ostream &os) const {
     os << "Numar Prajituri Facute: " << Numar_Prajituri_Facute << endl;
     os << "\n";
@@ -41,6 +42,11 @@ Cofetar::Cofetar(const string &Post_, const string &Nume_Angajat_, bool ECalific
 
 std::shared_ptr<Angajat> Cofetar::clone() const {
     return std::make_shared<Cofetar>(*this);
+}
+
+void Cofetar::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
+    std::cout << "Cofetarul prepara produsul: " << p->get_Nume() << "in cantiate de " << cantiate_;
+    p->set_Cantitate(cantiate_);
 }
 
 void Vanzator::Angajat_afisare(std::ostream &os) const {
@@ -55,3 +61,18 @@ Vanzator::Vanzator(const string &Post_, const string &Nume_Angajat_, bool ECalif
 std::shared_ptr<Angajat> Vanzator::clone() const {
     return std::make_shared<Vanzator>(*this);
 }
+
+void Vanzator::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
+    std::cout << "Vanzatorul vinde produsul " << p->get_Nume() << "in cantiatea de " << cantiate_;
+    p->set_Cantitate(cantiate_);
+}
+
+std::shared_ptr<Produs> Vanzator::Cautare_Produs(string &nume, Cofetarie &c) {
+    return c.Cof_Cauta_Produs(nume);
+}
+
+
+
+
+
+

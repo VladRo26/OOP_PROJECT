@@ -22,8 +22,22 @@ Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantia
 
 void Produs::Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_) {
     Ingrediente_Produs.push_back(std::make_pair(ing_, Cantiate_Ingredient_));
+}
 
+int Produs::get_Cantiate() {
+    return Cantitate_Produs;
+}
 
+string &Produs::get_Nume() {
+    return Nume_Produs;
+}
+
+void Produs::set_Cantitate(int c) {
+    Cantitate_Produs = c;
+}
+
+float Produs::get_Pret() {
+    return Pret;
 }
 
 std::shared_ptr<Produs> Produs_Dulce::clone() const {

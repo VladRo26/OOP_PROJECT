@@ -26,6 +26,7 @@ protected:
     bool DePost;
     int Cantitate_Produs;
     vector<pair<Ingredient, int>> Ingrediente_Produs;
+    float Cost_Productie;
 
     Produs(const Produs &other) = default;
 
@@ -41,6 +42,14 @@ public:
     Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_);
 
     void Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_);
+
+    int get_Cantiate();
+
+    string &get_Nume();
+
+    void set_Cantitate(int c);
+
+    float get_Pret();
 };
 
 class Produs_Dulce : public Produs {

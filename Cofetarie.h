@@ -17,15 +17,24 @@ using std::endl;
 using std::string;
 using std::vector;
 
+class Angajat;
+
+class Client;
+
+class Cofetarie;
+
 class Cofetarie {
 private:
     string Nume_Cofetarie;
     vector<std::shared_ptr<Angajat>> Angajati;
     vector<std::shared_ptr<Produs>> Produse;
     vector<std::shared_ptr<Client>> Clienti;
+    float Profit;
+    float Cifra_Afaceri;
 public:
     Cofetarie(const string &Nume_Cofetarie_, vector<std::shared_ptr<Angajat>> Angajati_,
-              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_);
+              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
+              float Cifra_Afaceri_);
 
     Cofetarie(const Cofetarie &other);
 
@@ -33,20 +42,10 @@ public:
 
     friend void swap(Cofetarie &c1, Cofetarie &c2);
 
-    friend std::ostream &operator<<(std::ostream &os, const Cofetarie &cof) {
-        os << "Nume cofetarie: " << cof.Nume_Cofetarie << endl;
-        os << "Angajati: " << endl;
-        for (const auto &ang: cof.Angajati) {
-            os << *ang << endl;
-        }
-        for (const auto &prod: cof.Produse) {
-            os << *prod << endl;
-        }
-        for (const auto &client_: cof.Clienti) {
-            os << *client_ << endl;
-        }
-        return os;
-    }
+    friend std::ostream &operator<<(std::ostream &os, const Cofetarie &cof);
+
+    std::shared_ptr<Produs> Cof_Cauta_Produs(string &nume);
+
 };
 
 

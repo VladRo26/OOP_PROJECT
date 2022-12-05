@@ -9,10 +9,14 @@
 #include <vector>
 #include <utility>
 #include <memory>
+#include "Produs.h"
+#include "Cofetarie.h"
 
 using std::endl;
 using std::string;
 using std::vector;
+
+class Cofetarie;
 
 class Angajat {
 private:
@@ -40,6 +44,9 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Angajat &an);
 
+    virtual void Lucreaza1(std::shared_ptr<Produs>, int) = 0;
+
+    //virtual void Cautare_Produs(string& nume,Cofetarie& c);
 };
 
 class Cofetar : public Angajat {
@@ -54,6 +61,8 @@ public:
 
     std::shared_ptr<Angajat> clone() const override;
 
+    void Lucreaza1(std::shared_ptr<Produs>, int) override;
+
 };
 
 class Vanzator : public Angajat {
@@ -67,6 +76,10 @@ public:
              int Numar_Vanzari_);
 
     std::shared_ptr<Angajat> clone() const override;
+
+    void Lucreaza1(std::shared_ptr<Produs>, int) override;
+
+    std::shared_ptr<Produs> Cautare_Produs(string &nume, Cofetarie &C);
 };
 
 

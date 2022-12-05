@@ -10,11 +10,18 @@
 #include <utility>
 #include <memory>
 #include <utility>
+#include "Produs.h"
+#include "Angajat.h"
+
 
 using std::endl;
 using std::string;
 using std::vector;
+using std::array;
 
+class Cofetarie;
+
+class Angajat;
 
 class Client {
 private:
@@ -36,6 +43,12 @@ public:
 
     Client(const string &Nume_, int Numar_com_);
 
+    virtual void
+    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a, Cofetarie c) = 0;
+    ///am nevoie de 2 angajati pentru o comanda unul bucatar unul vanzator
+
+    virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) = 0;
+
 };
 
 class Client_Pers_Fizic : public Client {
@@ -51,6 +64,10 @@ public:
 
     std::shared_ptr<Client> clone() const override;
 
+    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
+                        Cofetarie c) override;
+
+    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;
 };
 
 class Client_Pers_Juridic : public Client {
@@ -66,6 +83,11 @@ public:
                         const string &Adresa_);
 
     std::shared_ptr<Client> clone() const override;
+
+    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
+                        Cofetarie c) override;
+
+    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;
 
 };
 
