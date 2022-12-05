@@ -44,7 +44,7 @@ public:
     Client(const string &Nume_, int Numar_com_);
 
     virtual void
-    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a, Cofetarie c) = 0;
+    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a, Cofetarie c) = 0;
     ///am nevoie de 2 angajati pentru o comanda unul bucatar unul vanzator
 
     virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) = 0;
@@ -64,8 +64,8 @@ public:
 
     std::shared_ptr<Client> clone() const override;
 
-    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
-                        Cofetarie c) override;
+    void
+    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a, Cofetarie c) override;
 
     void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;
 };
@@ -84,7 +84,7 @@ public:
 
     std::shared_ptr<Client> clone() const override;
 
-    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
+    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
                         Cofetarie c) override;
 
     void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;

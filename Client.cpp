@@ -21,7 +21,7 @@ Client_Pers_Fizic::Client_Pers_Fizic(const string &Nume_, int Numar_com, int Vec
 
 std::shared_ptr<Client> Client_Pers_Fizic::clone() const { return std::make_shared<Client_Pers_Fizic>(*this); }
 
-void Client_Pers_Fizic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
+void Client_Pers_Fizic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
                                        Cofetarie c) {
     std::shared_ptr<Vanzator> vanz1 = std::dynamic_pointer_cast<Vanzator>(a[0]);
     if (cantitate_ > p->get_Cantiate()) {
@@ -89,7 +89,7 @@ Client_Pers_Juridic::Client_Pers_Juridic(const string &Nume, int Numar_com, cons
 std::shared_ptr<Client> Client_Pers_Juridic::clone() const { return std::make_shared<Client_Pers_Juridic>(*this); }
 
 void
-Client_Pers_Juridic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, array<std::shared_ptr<Angajat>, 2> a,
+Client_Pers_Juridic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
                                     Cofetarie c) {
     if (cantitate_ < 30) {
         std::cout << "Comanda pe Persoana Juridica trebuie sa aiba minim 30 de bucati!" << endl;

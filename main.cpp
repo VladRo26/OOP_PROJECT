@@ -30,8 +30,8 @@ int main() {
     Cofetar c1 = Cofetar("Cofetar", "Mihai", 1, 3500, 2, 100);
     Vanzator v1 = Vanzator("Vanzator", "Paniti", 0, 2000, 0, 0);
     vector<std::shared_ptr<Angajat>> vec_ang;
-    vec_ang.emplace_back(c1.clone());
     vec_ang.emplace_back(v1.clone());
+    vec_ang.emplace_back(c1.clone());
 //    std::cout<<c1;
 //    std::cout<<v1;
     ///Declarare Clienti
@@ -45,9 +45,6 @@ int main() {
     ///Declarare Cofetarie
     Cofetarie cof1 = Cofetarie("Bon-Bon", vec_ang, vec_prod, vec_client, 100, 500);
     std::cout << cof1;
-    array<std::shared_ptr<Angajat>, 2> arr_ang;
-    arr_ang[0] = v1.clone();
-    arr_ang[1] = c1.clone();
-    cl1.Comanda_Produs(savarina.clone(), 50, arr_ang, cof1);
+    cl1.Comanda_Produs(savarina.clone(), 50, vec_ang, cof1);
 
 }
