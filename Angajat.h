@@ -79,7 +79,7 @@ public:
 
     void Lucreaza1(std::shared_ptr<Produs>, int) override;
 
-    std::shared_ptr<Produs> Cautare_Produs(string &nume, Cofetarie &C);
+    std::shared_ptr<Produs> Cautare_Produs(const string &nume, Cofetarie &C);
 };
 
 

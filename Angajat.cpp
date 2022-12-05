@@ -67,7 +67,7 @@ void Vanzator::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
     p->set_Cantitate(cantiate_);
 }
 
-std::shared_ptr<Produs> Vanzator::Cautare_Produs(string &nume, Cofetarie &c) {
+std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &c) {
     return c.Cof_Cauta_Produs(nume);
 }
 
