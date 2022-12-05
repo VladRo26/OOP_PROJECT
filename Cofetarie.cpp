@@ -54,7 +54,7 @@ std::ostream &operator<<(std::ostream &os, const Cofetarie &cof) {
     return os;
 }
 
-std::shared_ptr<Produs> Cofetarie::Cof_Cauta_Produs(string &nume) {
+std::shared_ptr<Produs> Cofetarie::Cof_Cauta_Produs(const string &nume) {
     for (auto &prod: Produse) {
         if (nume.compare(prod->get_Nume()) == 0)
             return prod;

@@ -39,7 +39,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Produs &prod);
 
-    Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_);
+    Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, float Cost_Productie_);
 
     void Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_);
 
@@ -61,7 +61,8 @@ private:
 public:
     std::shared_ptr<Produs> clone() const override;
 
-    Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool EDulce_);
+    Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool EDulce_,
+                 float Cost_Productie_);
 };
 
 class Produs_Sarat : public Produs {
@@ -73,7 +74,8 @@ private:
 public:
     std::shared_ptr<Produs> clone() const override;
 
-    Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_);
+    Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_,
+                 float Cost_Productie_);
 };
 
 

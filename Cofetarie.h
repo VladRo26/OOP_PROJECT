@@ -44,7 +44,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Cofetarie &cof);
 
-    std::shared_ptr<Produs> Cof_Cauta_Produs(string &nume);
+    std::shared_ptr<Produs> Cof_Cauta_Produs(const string &nume);
 
 };
 

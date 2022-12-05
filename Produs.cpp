@@ -17,8 +17,9 @@ std::ostream &operator<<(std::ostream &os, const Produs &prod) {
     return os;
 }
 
-Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_)
-        : Nume_Produs(std::move(Nume_Produs_)), Pret(Pret_), DePost(DePost_), Cantitate_Produs(Cantiate_Produs_) {}
+Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, float Cost_Productie_)
+        : Nume_Produs(std::move(Nume_Produs_)), Pret(Pret_), DePost(DePost_), Cantitate_Produs(Cantiate_Produs_),
+          Cost_Productie(Cost_Productie_) {}
 
 void Produs::Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_) {
     Ingrediente_Produs.push_back(std::make_pair(ing_, Cantiate_Ingredient_));
@@ -44,8 +45,9 @@ std::shared_ptr<Produs> Produs_Dulce::clone() const {
     return std::make_shared<Produs_Dulce>(*this);
 }
 
-Produs_Dulce::Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool EDulce_)
-        : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_), EDulce(EDulce_) {}
+Produs_Dulce::Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool EDulce_,
+                           float Cost_Productie_)
+        : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_, Cost_Productie_), EDulce(EDulce_) {}
 
 void Produs_Dulce::Produs_Afisare(std::ostream &os) const {
     os << "E dulce?: " << EDulce << endl;
@@ -61,5 +63,6 @@ void Produs_Sarat::Produs_Afisare(std::ostream &os) const {
     os << "\n";
 }
 
-Produs_Sarat::Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_)
-        : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_), ESarat(ESarat_) {}
+Produs_Sarat::Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_,
+                           float Cost_Productie_)
+        : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_, Cost_Productie_), ESarat(ESarat_) {}

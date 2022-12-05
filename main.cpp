@@ -14,10 +14,10 @@ int main() {
     Ingredient faina = Ingredient("faina", 500);
     Ingredient frisca = Ingredient("frisca", 1000);
     ///Declarare Produse
-    Produs_Sarat saratele = Produs_Sarat("saratele", 2.5, 1, 30, 1);
+    Produs_Sarat saratele = Produs_Sarat("saratele", 2.5, 1, 30, 1, 1);
     saratele.Add_Ingredient(sare, 20);
     saratele.Add_Ingredient(faina, 50);
-    Produs_Dulce savarina = Produs_Dulce("savarina", 5.5, 0, 20, 1);
+    Produs_Dulce savarina = Produs_Dulce("savarina", 5.5, 0, 20, 1, 3);
     savarina.Add_Ingredient(zahar, 10);
     savarina.Add_Ingredient(faina, 50);
     savarina.Add_Ingredient(frisca, 100);
@@ -46,5 +46,4 @@ int main() {
     Cofetarie cof1 = Cofetarie("Bon-Bon", vec_ang, vec_prod, vec_client, 100, 500);
     std::cout << cof1;
     cl1.Comanda_Produs(savarina.clone(), 50, vec_ang, cof1);
-
 }
