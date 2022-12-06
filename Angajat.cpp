@@ -43,6 +43,11 @@ void Angajat::Cerere_Marire_Salariu(float procent_) {
     }
 }
 
+bool Angajat::Eligibil_marire(float proc_) {
+    std::cout << "procent: " << proc_;
+    return 0;
+}
+
 void Cofetar::Angajat_afisare(std::ostream &os) const {
     os << "Numar Prajituri Facute: " << Numar_Prajituri_Facute << endl;
     os << "\n";

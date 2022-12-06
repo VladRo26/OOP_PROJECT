@@ -22,7 +22,7 @@ class Angajat {
 private:
     virtual void Angajat_afisare(std::ostream &) const {}
 
-    virtual bool Eligibil_marire(float proc_) = 0;
+    virtual bool Eligibil_marire(float proc_);
 
 protected:
     static int id_max;
