@@ -6,18 +6,18 @@
 #include <string>
 #include <vector>
 
-class eroare_aplicație : public std::runtime_error {
+class eroare_aplicatie : public std::runtime_error {
     using std::runtime_error::runtime_error;
 };
 
-class input_invalid : public eroare_aplicație {
+class input_invalid : public eroare_aplicatie {
 public:
-    input_invalid(const std::string &string_) : eroare_aplicație("Input invalid: " + string_) {}
+    input_invalid(const std::string &string_) : eroare_aplicatie("Input invalid: " + string_) {}
 };
 
-class null_ptr : public eroare_aplicație {
+class null_ptr : public eroare_aplicatie {
 public:
-    null_ptr(const std::string &string_) : eroare_aplicație("Pointerul este null: " + string_) {}
+    null_ptr(const std::string &string_) : eroare_aplicatie("Pointerul este null: " + string_) {}
 };
 
 class eroare_constructor : public input_invalid {
