@@ -43,7 +43,7 @@ void Angajat::Cerere_Marire_Salariu(float procent_) {
     }
 }
 
-bool Angajat::Eligibil_marire(float proc_) {
+bool Angajat::Eligibil_marire(float &proc_) {
     std::cout << "procent: " << proc_;
     return 0;
 }
@@ -67,7 +67,7 @@ void Cofetar::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
     p->set_Cantitate(p->get_Cantiate() + cantiate_);
 }
 
-bool Cofetar::Eligibil_marire(float proc_) {
+bool Cofetar::Eligibil_marire(float &proc_) {
     int optiune = 0;
     if (proc_ <= 10 && Numar_Prajituri_Facute >= 40)
         return 1;
@@ -160,7 +160,7 @@ std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &
 }
 
 
-bool Vanzator::Eligibil_marire(float proc_) {
+bool Vanzator::Eligibil_marire(float &proc_) {
     int optiune = 0;
     if (proc_ <= 5 && Numar_Vanzari >= 2)
         return 1;

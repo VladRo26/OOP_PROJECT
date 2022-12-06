@@ -48,7 +48,7 @@ int main() {
         Cofetarie cof1 = Cofetarie("Bon-Bon", vec_ang, vec_prod, vec_client, 0, 0, 0);
         std::cout << cof1;
         try {
-            vec_client[0]->Comanda_Produs(vec_prod[0], 50, vec_ang, cof1);
+            vec_client[0]->Comanda_Produs(saratele.clone(), 50, vec_ang, cof1);
         } catch (null_ptr &err) {
             std::cout << err.what() << endl;
         }
