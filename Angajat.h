@@ -59,7 +59,7 @@ private:
 
     void Angajat_afisare(std::ostream &os) const override;
 
-    bool Eligibil_Marire(float proc_) override;
+    bool Eligibil_marire(float proc_) override;
 
 public:
     Cofetar(const string &Post_, const string &Nume_Angajat_, bool ECalificat_, float Salariu_, int Experienta_,
@@ -78,7 +78,7 @@ private:
 
     void Angajat_afisare(std::ostream &os) const override;
 
-    bool Eligibil_Marire(float proc_) override;
+    bool Eligibil_marire(float proc_) override;
 
 public:
     Vanzator(const string &Post_, const string &Nume_Angajat_, bool ECalificat_, float Salariu_, int Experienta_,
