@@ -24,6 +24,8 @@ private:
 
     virtual bool Eligibil_marire(float proc_) {}
 
+    =0;
+
 protected:
     static int id_max;
     const int id;
