@@ -22,6 +22,8 @@ class Angajat {
 private:
     virtual void Angajat_afisare(std::ostream &) const {}
 
+    virtual bool Eligibil_marire(float proc_) {}
+
 protected:
     static int id_max;
     const int id;
@@ -46,7 +48,9 @@ public:
 
     virtual void Lucreaza1(std::shared_ptr<Produs>, int) = 0;
 
-    //virtual void Cautare_Produs(string& nume,Cofetarie& c);
+    void Cerere_Marire_Salariu(float procent_);
+
+    static int Get_id();
 };
 
 class Cofetar : public Angajat {
@@ -54,6 +58,8 @@ private:
     int Numar_Prajituri_Facute;
 
     void Angajat_afisare(std::ostream &os) const override;
+
+    bool Eligibil_Marire(float proc_) override;
 
 public:
     Cofetar(const string &Post_, const string &Nume_Angajat_, bool ECalificat_, float Salariu_, int Experienta_,
@@ -63,6 +69,7 @@ public:
 
     void Lucreaza1(std::shared_ptr<Produs>, int) override;
 
+
 };
 
 class Vanzator : public Angajat {
@@ -70,6 +77,8 @@ private:
     int Numar_Vanzari;
 
     void Angajat_afisare(std::ostream &os) const override;
+
+    bool Eligibil_Marire(float proc_) override;
 
 public:
     Vanzator(const string &Post_, const string &Nume_Angajat_, bool ECalificat_, float Salariu_, int Experienta_,
@@ -80,6 +89,7 @@ public:
     void Lucreaza1(std::shared_ptr<Produs>, int) override;
 
     std::shared_ptr<Produs> Cautare_Produs(const string &nume, Cofetarie &C);
+
 };
 
 

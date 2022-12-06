@@ -4,6 +4,8 @@
 
 #include "Produs.h"
 
+float Produs::Costuri_Totale_Produse = 0;
+
 std::ostream &operator<<(std::ostream &os, const Produs &prod) {
     os << "Nume Produs:" << prod.Nume_Produs << endl;
     os << "Pret: " << prod.Pret << endl;
@@ -19,7 +21,13 @@ std::ostream &operator<<(std::ostream &os, const Produs &prod) {
 
 Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, float Cost_Productie_)
         : Nume_Produs(std::move(Nume_Produs_)), Pret(Pret_), DePost(DePost_), Cantitate_Produs(Cantiate_Produs_),
-          Cost_Productie(Cost_Productie_) {}
+          Cost_Productie(Cost_Productie_) {
+    Costuri_Totale_Produse = Costuri_Totale_Produse + Cost_Productie_ * (float) Cantiate_Produs_;
+    if (Pret <= 0 && Pret < Cost_Productie)
+        throw eroare_constructor("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
+    if (Cantiate_Produs_ <= 0)
+        throw eroare_constructor("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
+}
 
 void Produs::Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_) {
     Ingrediente_Produs.push_back(std::make_pair(ing_, Cantiate_Ingredient_));
@@ -41,6 +49,18 @@ float Produs::get_Pret() {
     return Pret;
 }
 
+float Produs::Get_Cost_Productie() {
+    return Cost_Productie;
+}
+
+void Produs::Set_Cost_Total(float cost_total_) {
+    Costuri_Totale_Produse = cost_total_;
+}
+
+float Produs::Get_Cost_Total() {
+    return Costuri_Totale_Produse;
+}
+
 std::shared_ptr<Produs> Produs_Dulce::clone() const {
     return std::make_shared<Produs_Dulce>(*this);
 }
@@ -52,6 +72,11 @@ Produs_Dulce::Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_
 void Produs_Dulce::Produs_Afisare(std::ostream &os) const {
     os << "E dulce?: " << EDulce << endl;
     os << "\n";
+}
+
+void Produs_Dulce::Descriere_Produs() {
+    std::cout << "Produsul cu numele: " << Nume_Produs << " contine zahar si nu este recomandat pentru diabetici!";
+    std::cout << "De asemenea are si un numar ridicat de calorii";
 }
 
 std::shared_ptr<Produs> Produs_Sarat::clone() const {
@@ -66,3 +91,8 @@ void Produs_Sarat::Produs_Afisare(std::ostream &os) const {
 Produs_Sarat::Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_,
                            float Cost_Productie_)
         : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_, Cost_Productie_), ESarat(ESarat_) {}
+
+void Produs_Sarat::Descriere_Produs() {
+    std::cout << "Produsul cu numele: " << Nume_Produs << "nu contine zahar si poate fi consumat si de diabetici!";
+    std::cout << "Acesta contine un numar mai scazut de calorii si mai multi carbohidrati";
+}

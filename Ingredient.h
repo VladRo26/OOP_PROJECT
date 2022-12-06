@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include "Exceptii.h"
 
 using std::endl;
 using std::string;
@@ -27,9 +28,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, Ingredient ingred);
 
-    string Get_Nume() const {
-        return Nume_Ingredient;
-    }
+    string Get_Nume() const;
 };
 
 

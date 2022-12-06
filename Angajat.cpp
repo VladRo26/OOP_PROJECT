@@ -9,7 +9,7 @@ int Angajat::id_max = 1;
 std::ostream &operator<<(std::ostream &os, const Angajat &an) {
     os << "ID-ul Angajatului: " << an.id << endl;
     os << "Post: " << an.Post << endl;
-    os << "Nume Angajat: " << an.Post << endl;
+    os << "Nume Angajat: " << an.Nume_Angajat << endl;
     os << "E Calificat?: " << an.ECalificat << endl;
     os << "Salariu: " << an.Salariu << endl;
     os << "Experienta: " << an.Expreienta << endl;
@@ -30,6 +30,18 @@ Angajat::Angajat(const string &Post_, const string &Nume_Angajat_, bool ECalific
         : id(id_max), Post(std::move(Post_)), Nume_Angajat(std::move(Nume_Angajat_)), ECalificat(ECalificat_),
           Salariu(Salariu_), Expreienta(Experienta_) { id_max++; }
 
+int Angajat::Get_id() {
+    return id_max;
+}
+
+void Angajat::Cerere_Marire_Salariu(float procent_) {
+    if (Eligibil_marire(procent_) == 1) {
+        Salariu = Salariu + (Salariu * procent_ / 100);
+        std::cout << "Noul salariu este: " << Salariu << " lei" << endl;
+    } else {
+        std::cout << "Ne pare rau, salariul nu se va mari!";
+    }
+}
 
 void Cofetar::Angajat_afisare(std::ostream &os) const {
     os << "Numar Prajituri Facute: " << Numar_Prajituri_Facute << endl;
@@ -45,8 +57,78 @@ std::shared_ptr<Angajat> Cofetar::clone() const {
 }
 
 void Cofetar::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
-    std::cout << "Cofetarul prepara produsul: " << p->get_Nume() << "in cantiate de " << cantiate_;
-    p->set_Cantitate(cantiate_);
+    std::cout << "Cofetarul prepara produsul: " << p->get_Nume() << " in cantiate de " << cantiate_ << endl;
+    p->Set_Cost_Total(p->Get_Cost_Total() + cantiate_ * p->Get_Cost_Productie());
+    p->set_Cantitate(p->get_Cantiate() + cantiate_);
+}
+
+bool Cofetar::Eligibil_Marire(float proc_) {
+    int optiune = 0;
+    if (proc_ <= 10 && Numar_Prajituri_Facute >= 40)
+        return 1;
+    else if (proc_ <= 15 && Numar_Prajituri_Facute >= 80)
+        return 1;
+    else if (proc_ > 15) {
+        if (Expreienta <= 2 || Numar_Prajituri_Facute < 150) {
+            std::cout << "Nu ai destula experienta capatata, va trebui sa mai astepti " << 2 - Expreienta
+                      << " ani sau sa mai faci " << 150 - Numar_Prajituri_Facute
+                      << " prajituri, se poate oferi maxim o marire de 15 procente"
+                      << std::endl;
+            std::cout << "Accepti marirea de 15 procente? (1.Da/2.Nu)";
+            std::cin >> optiune;
+            switch (optiune) {
+                case 1:
+                    proc_ = 15;
+                    return 1;
+                case 2:
+                    return 0;
+            }
+        } else if (proc_ <= 30) {
+            return 1;
+        } else if (proc_ > 30 && proc_ < 50) {
+            if (Numar_Prajituri_Facute >= 200 && ECalificat == 1) {
+                return 1;
+            } else {
+                std::cout
+                        << "Pentru a se accepta o marire de peste 30 de procente trebuie sa ai mai mult de 200 de prajituri si sa fi calificat, mai ai de facut "
+                        << 200 - Numar_Prajituri_Facute
+                        << " prajituri sau de facut o facultate de profil,maximul care se poate oferi este de 30 de procente"
+                        << std::endl;
+                std::cout << "Accepti marirea de 30 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc_ = 30;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            }
+        } else if (proc_ >= 50) {
+            if (Expreienta <= 5 || Numar_Prajituri_Facute < 300 || ECalificat == 0) {
+                std::cout
+                        << "Pentru o marire de peste 50 de procente iti trebuie minim 5 ani experienta si minim 300 de prajituri facute si sa fi calificat, mai ai de asteptat "
+                        << 5 - Expreienta << " ani, si de facut " << 300 - Numar_Prajituri_Facute
+                        << " prajituri, sau de facut o facultate de profil, mairea maxima care se poate oferi este de 50 de procente";
+                std::cout << "Accepti marirea de 50 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc_ = 50;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            } else
+                return 1;
+        }
+    }
+    return 0;
+
 }
 
 void Vanzator::Angajat_afisare(std::ostream &os) const {
@@ -63,12 +145,79 @@ std::shared_ptr<Angajat> Vanzator::clone() const {
 }
 
 void Vanzator::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
-    std::cout << "Vanzatorul vinde produsul " << p->get_Nume() << "in cantiatea de " << cantiate_;
-    p->set_Cantitate(cantiate_);
+    std::cout << "Vanzatorul vinde produsul " << p->get_Nume() << " in cantiatea de " << cantiate_ << endl;
+    p->set_Cantitate(p->get_Cantiate() - cantiate_);
+    Numar_Vanzari++;
 }
 
 std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &c) {
     return c.Cof_Cauta_Produs(nume);
+}
+
+
+bool Vanzator::Eligibil_Marire(float proc_) {
+    int optiune = 0;
+    if (proc_ <= 5 && Numar_Vanzari >= 2)
+        return 1;
+    else if (proc_ <= 10 && Numar_Vanzari >= 5)
+        return 1;
+    else if (proc_ > 10) {
+        if (Expreienta <= 2 || Numar_Vanzari < 10) {
+            std::cout << "Nu ai destula experienta capatata, va trebui sa mai astepti " << 2 - Expreienta
+                      << "ani sau sa mai faci " << 10 - Numar_Vanzari << " se poate oferi maxim o marire de 10 procente"
+                      << std::endl;
+            std::cout << "Accepti marirea de 10 procente? (1.Da/2.Nu)";
+            std::cin >> optiune;
+            switch (optiune) {
+                case 1:
+                    proc_ = 10;
+                    return 1;
+                case 2:
+                    return 0;
+            }
+        } else if (proc_ <= 20) {
+            return 1;
+        } else if (proc_ > 20 && proc_ < 40) {
+            if (Numar_Vanzari >= 30) {
+                return 1;
+            } else {
+                std::cout
+                        << "Pentru a se accepta o marire de peste 20 de procente trebuie sa ai mai mult de 30 de vanzari, mai ai de facut "
+                        << 30 - Numar_Vanzari << " maximul care se poate oferi este de 20 de procente" << std::endl;
+                std::cout << "Accepti marirea de 20 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc_ = 20;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            }
+        } else if (proc_ >= 40) {
+            if (Expreienta <= 5 || Numar_Vanzari < 100) {
+                std::cout
+                        << "Pentru o marire de peste 40 de procente iti trebuie minim 5 ani experienta si minim 100 de vanzari, mai ai de asteptat "
+                        << 5 - Expreienta << " ani, si de facut " << 100 - Numar_Vanzari
+                        << " mairea maxima care se poate oferi este de 40 de procente";
+                std::cout << "Accepti marirea de 40 de procente? (1.Da/2.Nu)";
+                std::cin >> optiune;
+                switch (optiune) {
+                    case 1:
+                        proc_ = 40;
+                        return 1;
+                    case 2:
+                        return 0;
+                    default:
+                        break;
+                }
+            } else
+                return 1;
+        }
+    }
+    return 0;
 }
 
 

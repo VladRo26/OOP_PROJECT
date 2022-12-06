@@ -47,7 +47,7 @@ public:
     Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a, Cofetarie &c) = 0;
     ///am nevoie de 2 angajati pentru o comanda unul bucatar unul vanzator
 
-    virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) = 0;
+    virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) = 0;
 
 };
 
@@ -68,7 +68,7 @@ public:
     Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
                    Cofetarie &c) override;
 
-    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;
+    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 };
 
 class Client_Pers_Juridic : public Client {
@@ -88,7 +88,7 @@ public:
     void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
                         Cofetarie &c) override;
 
-    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int) override;
+    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 
 };
 

@@ -10,6 +10,7 @@
 #include <utility>
 #include <memory>
 #include "Ingredient.h"
+#include "Exceptii.h"
 
 using std::endl;
 using std::string;
@@ -27,6 +28,7 @@ protected:
     int Cantitate_Produs;
     vector<pair<Ingredient, int>> Ingrediente_Produs;
     float Cost_Productie;
+    static float Costuri_Totale_Produse;
 
     Produs(const Produs &other) = default;
 
@@ -50,6 +52,15 @@ public:
     void set_Cantitate(int c);
 
     float get_Pret();
+
+    float Get_Cost_Productie();
+
+    static void Set_Cost_Total(float);
+
+    static float Get_Cost_Total();
+
+    virtual void Descriere_Produs() = 0;
+
 };
 
 class Produs_Dulce : public Produs {
@@ -63,6 +74,8 @@ public:
 
     Produs_Dulce(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool EDulce_,
                  float Cost_Productie_);
+
+    void Descriere_Produs() override;
 };
 
 class Produs_Sarat : public Produs {
@@ -76,6 +89,8 @@ public:
 
     Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, bool ESarat_,
                  float Cost_Productie_);
+
+    void Descriere_Produs() override;
 };
 
 
