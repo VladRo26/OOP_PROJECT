@@ -68,12 +68,14 @@ void Client_Pers_Fizic::Reducere_Comadna_Produs(std::shared_ptr<Produs> p, int c
         std::cout << "Totalul de plata este: " << 0.9 * (p->get_Pret() * float(cantitate_)) << endl;
         cifra_afaceri = cifra_afaceri + 0.9 * (p->get_Pret() * float(cantitate_));
         c.Set_Cifra_Afaceri(cifra_afaceri);
+        std::cout << "\n";
         Numar_Comenzi++;
     } else if (Numar_Comenzi >= 30 && Numar_Comenzi <= 50) {
         std::cout << "Aveti o reducere de 20% pentru ca sunteti fidel de niveul 2! " << endl;
         std::cout << "Totalul de plata este: " << 0.8 * (p->get_Pret() * float(cantitate_)) << endl;
         cifra_afaceri = cifra_afaceri + 0.8 * (p->get_Pret() * float(cantitate_));
         c.Set_Cifra_Afaceri(cifra_afaceri);
+        std::cout << "\n";
         Numar_Comenzi++;
     } else if (Vechime_Client >= 6 && Numar_Comenzi > 50) {
         std::cout << "Felicitari! Esti unul dintre cei mai fideli clienti! Pentru asta obtii o reducere de 40%%!!! "
@@ -81,11 +83,14 @@ void Client_Pers_Fizic::Reducere_Comadna_Produs(std::shared_ptr<Produs> p, int c
         std::cout << "Totalul de plata este: " << 0.6 * (p->get_Pret() * float(cantitate_)) << endl;
         cifra_afaceri = cifra_afaceri + 0.6 * (p->get_Pret() * float(cantitate_));
         c.Set_Cifra_Afaceri(cifra_afaceri);
+        std::cout << "\n";
+        Numar_Comenzi++;
     } else {
         Numar_Comenzi++;
         cifra_afaceri = cifra_afaceri + (p->get_Pret() * float(cantitate_));
         c.Set_Cifra_Afaceri(cifra_afaceri);
         std::cout << "Totalul de plata este: " << p->get_Pret() * float(cantitate_) << endl;
+        std::cout << "\n";
     }
 }
 
@@ -121,6 +126,7 @@ Client_Pers_Juridic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, v
                 break;
             case 2:
                 std::cout << "Va uram o zi buna! Va mai asteptam! " << endl;
+                std::cout << "\n";
                 break;
             default:
                 break;

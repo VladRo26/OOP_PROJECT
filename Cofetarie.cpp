@@ -55,6 +55,7 @@ std::ostream &operator<<(std::ostream &os, const Cofetarie &cof) {
     os << "Cifra afaceri: " << cof.Cifra_Afaceri << " lei" << endl;
     os << "Costuri: " << cof.Costuri << " lei" << endl;
     os << "Profit: " << cof.Profit << " lei" << endl;
+    os << "\n";
     return os;
 }
 

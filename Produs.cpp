@@ -75,8 +75,10 @@ void Produs_Dulce::Produs_Afisare(std::ostream &os) const {
 }
 
 void Produs_Dulce::Descriere_Produs() {
-    std::cout << "Produsul cu numele: " << Nume_Produs << " contine zahar si nu este recomandat pentru diabetici!";
-    std::cout << "De asemenea are si un numar ridicat de calorii";
+    std::cout << "Produsul cu numele: " << Nume_Produs << " contine zahar si nu este recomandat pentru diabetici!"
+              << endl;
+    std::cout << "De asemenea are si un numar ridicat de calorii" << endl;
+    std::cout << "\n\n";
 }
 
 std::shared_ptr<Produs> Produs_Sarat::clone() const {
@@ -93,6 +95,8 @@ Produs_Sarat::Produs_Sarat(const string &Nume_Produs_, float Pret_, bool DePost_
         : Produs(Nume_Produs_, Pret_, DePost_, Cantiate_Produs_, Cost_Productie_), ESarat(ESarat_) {}
 
 void Produs_Sarat::Descriere_Produs() {
-    std::cout << "Produsul cu numele: " << Nume_Produs << "nu contine zahar si poate fi consumat si de diabetici!";
-    std::cout << "Acesta contine un numar mai scazut de calorii si mai multi carbohidrati";
+    std::cout << "Produsul cu numele: " << Nume_Produs << " nu contine zahar si poate fi consumat si de diabetici!"
+              << endl;
+    std::cout << "Acesta contine un numar mai scazut de calorii si mai multi carbohidrati" << endl;
+    std::cout << "\n\n";
 }

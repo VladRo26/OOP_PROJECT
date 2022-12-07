@@ -47,13 +47,15 @@ int main() {
         ///Declarare Cofetarie
         Cofetarie cof1 = Cofetarie("Bon-Bon", vec_ang, vec_prod, vec_client, 0, 0, 0);
         std::cout << cof1;
+        vec_prod[0]->Descriere_Produs();
         try {
-            vec_client[0]->Comanda_Produs(saratele.clone(), 50, vec_ang, cof1);
+            vec_client[0]->Comanda_Produs(vec_prod[0], 50, vec_ang, cof1);
         } catch (null_ptr &err) {
             std::cout << err.what() << endl;
         }
         vec_client[1]->Comanda_Produs(vec_prod[1], 60, vec_ang, cof1);
-        std::cout << saratele;
+        vec_ang[0]->Cerere_Marire_Salariu(10);
+        vec_ang[1]->Cerere_Marire_Salariu(20);
         cof1.Calculeaza_Profit(saratele.clone());
         std::cout << cof1;
     } catch (eroare_constructor &err) {
