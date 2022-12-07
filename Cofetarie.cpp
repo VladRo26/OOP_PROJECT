@@ -72,21 +72,21 @@ std::shared_ptr<Produs> Cofetarie::Cof_Cauta_Produs(const string &nume) {
     return nullptr;
 }
 
-float Cofetarie::Get_Profit() {
-    return Profit;
-}
+//float Cofetarie::Get_Profit() {
+//    return Profit;
+//}
 
-float Cofetarie::Get_Cifra_Afaceri() {
-    return Cifra_Afaceri;
-}
+//float Cofetarie::Get_Cifra_Afaceri() {
+//    return Cifra_Afaceri;
+//}
 
-float Cofetarie::Get_Costuri() {
-    return Costuri;
-}
+//float Cofetarie::Get_Costuri() {
+//    return Costuri;
+//}
 
-void Cofetarie::Set_Profit(float profit_) {
-    Profit = profit_;
-}
+//void Cofetarie::Set_Profit(float profit_) {
+//    Profit = profit_;
+//}
 
 void Cofetarie::Set_Cifra_Afaceri(float cifra_afaceri_) {
     Cifra_Afaceri = cifra_afaceri_;

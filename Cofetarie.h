@@ -48,17 +48,17 @@ public:
 
     std::shared_ptr<Produs> Cof_Cauta_Produs(const string &nume);
 
-    float Get_Profit();
+//    float Get_Profit();
 
-    float Get_Cifra_Afaceri();
+//    float Get_Cifra_Afaceri();
 
-    float Get_Costuri();
+//    float Get_Costuri();
 
-    void Set_Profit(float profit_);
+//    void Set_Profit(float profit_);
 
     void Set_Cifra_Afaceri(float cifra_afaceri_);
 
-    void Set_Costuri(float costuri_);
+//    void Set_Costuri(float costuri_);
 
     void Calculeaza_Costuri(std::shared_ptr<Produs> p);
 
