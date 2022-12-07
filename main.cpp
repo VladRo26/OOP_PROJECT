@@ -2,6 +2,7 @@
 #include <vector>
 #include "Cofetarie.h"
 #include "Exceptii.h"
+#include <memory>
 
 using std::endl;
 using std::string;
@@ -16,47 +17,53 @@ int main() {
         Ingredient faina = Ingredient("faina", 500);
         Ingredient frisca = Ingredient("frisca", 1000);
         ///Declarare Produse
-        Produs_Sarat saratele = Produs_Sarat("saratele", 2.5, 1, 100, 1, 1);
-        saratele.Add_Ingredient(sare, 20);
-        saratele.Add_Ingredient(faina, 50);
-        Produs_Dulce savarina = Produs_Dulce("savarina", 5.5, 0, 20, 1, 3);
-        savarina.Add_Ingredient(zahar, 10);
-        savarina.Add_Ingredient(faina, 50);
-        savarina.Add_Ingredient(frisca, 100);
+        std::shared_ptr<Produs> p1;
+        p1 = std::make_shared<Produs_Dulce>("savarina", 5.5, 0, 20, 1, 3);
+        p1->Add_Ingredient(zahar, 10);
+        p1->Add_Ingredient(faina, 50);
+        p1->Add_Ingredient(frisca, 100);
+        std::shared_ptr<Produs> p2;
+        p2 = std::make_shared<Produs_Sarat>("saratele", 2.5, 1, 100, 1, 1);
+        p2->Add_Ingredient(sare, 20);
+        p2->Add_Ingredient(faina, 50);
         vector<std::shared_ptr<Produs>> vec_prod;
-        vec_prod.emplace_back(saratele.clone());
-        vec_prod.emplace_back(savarina.clone());
+        vec_prod.emplace_back(p1);
+        vec_prod.emplace_back(p2);
 //    std::cout<<saratele;
 //    std::cout<<savarina;
         ///Declarare Angajati
-        Cofetar c1 = Cofetar("Cofetar", "Mihai", 1, 3500, 2, 100);
-        Vanzator v1 = Vanzator("Vanzator", "Paniti", 0, 20000, 0, 0);
+        std::shared_ptr<Angajat> a1;
+        a1 = std::make_shared<Vanzator>("Vanzator", "Paniti", 0, 20000, 0, 0);
+        std::shared_ptr<Angajat> a2;
+        a2 = std::make_shared<Cofetar>("Cofetar", "Mihai", 1, 3500, 2, 100);
         vector<std::shared_ptr<Angajat>> vec_ang;
-        vec_ang.emplace_back(v1.clone());
-        vec_ang.emplace_back(c1.clone());
+        vec_ang.emplace_back(a1);
+        vec_ang.emplace_back(a2);
 //    std::cout<<c1;
 //    std::cout<<v1;
         ///Declarare Clienti
-        Client_Pers_Fizic cl1 = Client_Pers_Fizic("Willam", 29, 4);
-        Client_Pers_Juridic cl2 = Client_Pers_Juridic("Vincenziu SRL", 100, "RKO10", 123, "Strada Napoli");
+        std::shared_ptr<Client> c1;
+        c1 = std::make_shared<Client_Pers_Fizic>("Willam", 29, 4);
+        std::shared_ptr<Client> c2;
+        c2 = std::make_shared<Client_Pers_Juridic>("Vincenziu SRL", 100, "RKO10", 123, "Strada Napoli");
         vector<std::shared_ptr<Client>> vec_client;
-        vec_client.emplace_back(cl1.clone());
-        vec_client.emplace_back(cl2.clone());
+        vec_client.emplace_back(c1);
+        vec_client.emplace_back(c2);
 //    std::cout<<cl1;
 //    std::cout<<cl2;
         ///Declarare Cofetarie
         Cofetarie cof1 = Cofetarie("Bon-Bon", vec_ang, vec_prod, vec_client, 0, 0, 0);
         std::cout << cof1;
-        vec_prod[0]->Descriere_Produs();
+        p1->Descriere_Produs();
         try {
-            vec_client[0]->Comanda_Produs(vec_prod[0], 50, vec_ang, cof1);
+            c1->Comanda_Produs(p1, 70, vec_ang, cof1);
         } catch (null_ptr &err) {
             std::cout << err.what() << endl;
         }
-        vec_client[1]->Comanda_Produs(vec_prod[1], 60, vec_ang, cof1);
-        vec_ang[0]->Cerere_Marire_Salariu(10);
-        vec_ang[1]->Cerere_Marire_Salariu(20);
-        cof1.Calculeaza_Profit(saratele.clone());
+//        c2->Comanda_Produs(p2, 60, vec_ang, cof1);
+        a1->Cerere_Marire_Salariu(10);
+        a2->Cerere_Marire_Salariu(20);
+        cof1.Calculeaza_Profit(p1);
         std::cout << cof1;
     } catch (eroare_constructor &err) {
         std::cout << err.what() << endl;

@@ -117,7 +117,7 @@ bool Cofetar::Eligibil_marire(float &proc_) {
             if (Expreienta <= 5 || Numar_Prajituri_Facute < 300 || ECalificat == 0) {
                 std::cout
                         << "Pentru o marire de peste 50 de procente iti trebuie minim 5 ani experienta si minim 300 de prajituri facute si sa fi calificat, mai ai de asteptat "
-                        << 5 - Expreienta << " ani, si de facut " << 300 - Numar_Prajituri_Facute
+                        << 5 - Expreienta << " ani, sau de facut " << 300 - Numar_Prajituri_Facute
                         << " prajituri, sau de facut o facultate de profil, mairea maxima care se poate oferi este de 50 de procente";
                 std::cout << "Accepti marirea de 50 de procente? (1.Da/2.Nu)";
                 std::cin >> optiune;
@@ -191,7 +191,8 @@ bool Vanzator::Eligibil_marire(float &proc_) {
             } else {
                 std::cout
                         << "Pentru a se accepta o marire de peste 20 de procente trebuie sa ai mai mult de 30 de vanzari, mai ai de facut "
-                        << 30 - Numar_Vanzari << " maximul care se poate oferi este de 20 de procente" << std::endl;
+                        << 30 - Numar_Vanzari << " vanzari,maximul care se poate oferi este de 20 de procente"
+                        << std::endl;
                 std::cout << "Accepti marirea de 20 de procente? (1.Da/2.Nu)";
                 std::cin >> optiune;
                 switch (optiune) {
@@ -209,7 +210,7 @@ bool Vanzator::Eligibil_marire(float &proc_) {
                 std::cout
                         << "Pentru o marire de peste 40 de procente iti trebuie minim 5 ani experienta si minim 100 de vanzari, mai ai de asteptat "
                         << 5 - Expreienta << " ani, si de facut " << 100 - Numar_Vanzari
-                        << " mairea maxima care se poate oferi este de 40 de procente";
+                        << " vanzari,mairea maxima care se poate oferi este de 40 de procente";
                 std::cout << "Accepti marirea de 40 de procente? (1.Da/2.Nu)";
                 std::cin >> optiune;
                 switch (optiune) {

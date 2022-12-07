@@ -25,7 +25,7 @@ void Client_Pers_Fizic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_
                                        Cofetarie &c) {
     std::shared_ptr<Vanzator> vanz1 = std::dynamic_pointer_cast<Vanzator>(a[0]);
     if (vanz1 == nullptr) {
-        std::cout << "Eroare la dynamic pointer cast! Pointerul este NULL!";
+        std::cout << "Eroare la dynamic pointer cast! Pointerul este NULL!" << endl;
     } else {
         if (cantitate_ > p->get_Cantiate()) {
             std::cout << "Nu avem destule produse pe stoc pentru aceasta comanda! Numarul maxim este de: "
