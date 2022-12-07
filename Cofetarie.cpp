@@ -92,9 +92,9 @@ void Cofetarie::Set_Cifra_Afaceri(float cifra_afaceri_) {
     Cifra_Afaceri = cifra_afaceri_;
 }
 
-void Cofetarie::Set_Costuri(float costuri_) {
-    Costuri = costuri_;
-}
+//void Cofetarie::Set_Costuri(float costuri_) {
+//    Costuri = costuri_;
+//}
 
 //Momentan las doar costurile produselor, as putea sa pun si salarile angajatiilor
 void Cofetarie::Calculeaza_Costuri(std::shared_ptr<Produs> p) {

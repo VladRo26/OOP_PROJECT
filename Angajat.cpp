@@ -30,9 +30,9 @@ Angajat::Angajat(const string &Post_, const string &Nume_Angajat_, bool ECalific
         : id(id_max), Post(std::move(Post_)), Nume_Angajat(std::move(Nume_Angajat_)), ECalificat(ECalificat_),
           Salariu(Salariu_), Expreienta(Experienta_) { id_max++; }
 
-int Angajat::Get_id() {
-    return id_max;
-}
+//int Angajat::Get_id() {
+//    return id_max;
+//}
 
 void Angajat::Cerere_Marire_Salariu(float procent_) {
     if (Eligibil_marire(procent_) == 1) {
