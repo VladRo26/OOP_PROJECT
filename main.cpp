@@ -60,7 +60,7 @@ int main() {
         } catch (null_ptr &err) {
             std::cout << err.what() << endl;
         }
-//        c2->Comanda_Produs(p2, 60, vec_ang, cof1);
+        c2->Comanda_Produs(p2, 60, vec_ang, cof1);
         a1->Cerere_Marire_Salariu(10);
         a2->Cerere_Marire_Salariu(20);
         cof1.Calculeaza_Profit(p1);
