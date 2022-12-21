@@ -4,7 +4,6 @@
 
 #include "Produs.h"
 
-float Produs::Costuri_Totale_Produse = 0;
 
 std::ostream &operator<<(std::ostream &os, const Produs &prod) {
     os << "Nume Produs:" << prod.Nume_Produs << endl;
@@ -22,11 +21,10 @@ std::ostream &operator<<(std::ostream &os, const Produs &prod) {
 Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, float Cost_Productie_)
         : Nume_Produs(std::move(Nume_Produs_)), Pret(Pret_), DePost(DePost_), Cantitate_Produs(Cantiate_Produs_),
           Cost_Productie(Cost_Productie_) {
-    Costuri_Totale_Produse = Costuri_Totale_Produse + Cost_Productie_ * (float) Cantiate_Produs_;
-    if (Pret <= 0 && Pret < Cost_Productie)
-        throw eroare_constructor("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
-    if (Cantiate_Produs_ <= 0)
-        throw eroare_constructor("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
+//    if (Pret <= 0 && Pret < Cost_Productie)
+//        throw eroare_constructor("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
+//    if (Cantiate_Produs_ <= 0)
+//        throw eroare_constructor("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
 }
 
 void Produs::Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_) {
@@ -53,13 +51,6 @@ float Produs::Get_Cost_Productie() {
     return Cost_Productie;
 }
 
-void Produs::Set_Cost_Total(float cost_total_) {
-    Costuri_Totale_Produse = cost_total_;
-}
-
-float Produs::Get_Cost_Total() {
-    return Costuri_Totale_Produse;
-}
 
 std::shared_ptr<Produs> Produs_Dulce::clone() const {
     return std::make_shared<Produs_Dulce>(*this);

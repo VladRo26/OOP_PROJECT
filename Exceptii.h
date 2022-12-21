@@ -10,19 +10,24 @@ class eroare_aplicatie : public std::runtime_error {
     using std::runtime_error::runtime_error;
 };
 
-class input_invalid : public eroare_aplicatie {
+class produs_negasit : public eroare_aplicatie {
 public:
-    explicit input_invalid(const std::string &string_) : eroare_aplicatie("Input invalid: " + string_) {}
+    explicit produs_negasit(const std::string &string_) : eroare_aplicatie("Eroare produs negasit!   " + string_) {}
 };
 
-class null_ptr : public eroare_aplicatie {
+class eroare_cantitate : public eroare_aplicatie {
 public:
-    explicit null_ptr(const std::string &string_) : eroare_aplicatie("Pointerul este null: " + string_) {}
+    explicit eroare_cantitate(const std::string &string_) : eroare_aplicatie("Eroare cantitate " + string_) {}
 };
 
-class eroare_constructor : public input_invalid {
+class eroare_vanzator : public eroare_aplicatie {
 public:
-    explicit eroare_constructor(const std::string &string_) : input_invalid("Eroare Constuctor: " + string_) {}
+    explicit eroare_vanzator(const std::string &string_) : eroare_aplicatie("Eroare vanzator " + string_) {}
+};
+
+class eroare_cofetar : public eroare_aplicatie {
+public:
+    explicit eroare_cofetar(const std::string &string_) : eroare_aplicatie("Eroare cofetar " + string_) {}
 };
 
 

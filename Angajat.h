@@ -69,7 +69,6 @@ public:
 
     void Lucreaza1(std::shared_ptr<Produs>, int) override;
 
-
 };
 
 class Vanzator : public Angajat {

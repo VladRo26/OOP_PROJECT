@@ -20,6 +20,10 @@ using std::vector;
 
 class Angajat;
 
+class Vanzator;
+
+class Cofetar;
+
 class Client;
 
 class Cofetarie;
@@ -29,14 +33,15 @@ private:
     string Nume_Cofetarie;
     vector<std::shared_ptr<Angajat>> Angajati;
     vector<std::shared_ptr<Produs>> Produse;
-    vector<std::shared_ptr<Client>> Clienti;
-    float Profit;
+//    vector<std::shared_ptr<Client>> Clienti;
     float Cifra_Afaceri;
     float Costuri;
 public:
-    Cofetarie(const string &Nume_Cofetarie_, vector<std::shared_ptr<Angajat>> Angajati_,
-              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
-              float Cifra_Afaceri_, float Costuri_);
+//    Cofetarie(const string &Nume_Cofetarie_, vector<std::shared_ptr<Angajat>> Angajati_,
+//              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
+//              float Cifra_Afaceri_, float Costuri_);
+
+    Cofetarie(const string &Nume_Cofetarie_);
 
     Cofetarie(const Cofetarie &other);
 
@@ -48,21 +53,21 @@ public:
 
     std::shared_ptr<Produs> Cof_Cauta_Produs(const string &nume);
 
-//    float Get_Profit();
+    void Adauga_Ang(std::shared_ptr<Angajat>);
 
-//    float Get_Cifra_Afaceri();
+    void Adauga_Prod(std::shared_ptr<Produs>);
 
-//    float Get_Costuri();
-
-//    void Set_Profit(float profit_);
+    float Get_Profit() const;
 
     void Set_Cifra_Afaceri(float cifra_afaceri_);
 
-//    void Set_Costuri(float costuri_);
+    std::shared_ptr<Vanzator> Get_Vanzator();
 
-    void Calculeaza_Costuri(std::shared_ptr<Produs> p);
+    std::shared_ptr<Cofetar> Get_Cofetar();
 
-    void Calculeaza_Profit(std::shared_ptr<Produs> p);
+    void adauga_Cost(float cost_) {
+        Costuri += cost_;
+    }
 
 };
 

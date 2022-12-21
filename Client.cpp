@@ -4,7 +4,7 @@
 
 #include "Client.h"
 
-//sa fac ceva sa aflu profitablitatea cofetariei si sa am si un cotabil angajat
+//sa fac ceva sa aflu profitablitatea cofetariei si sa am si un cotabil angaja
 
 std::ostream &operator<<(std::ostream &os, const Client &client_) {
     os << "Nume Client: " << client_.Nume_Client << endl;
@@ -21,43 +21,41 @@ Client_Pers_Fizic::Client_Pers_Fizic(const string &Nume_, int Numar_com, int Vec
 
 std::shared_ptr<Client> Client_Pers_Fizic::clone() const { return std::make_shared<Client_Pers_Fizic>(*this); }
 
-void Client_Pers_Fizic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
-                                       Cofetarie &c) {
-    std::shared_ptr<Vanzator> vanz1 = std::dynamic_pointer_cast<Vanzator>(a[0]);
-    if (vanz1 == nullptr) {
-        std::cout << "Eroare la dynamic pointer cast! Pointerul este NULL!" << endl;
-    } else {
-        if (cantitate_ > p->get_Cantiate()) {
-            std::cout << "Nu avem destule produse pe stoc pentru aceasta comanda! Numarul maxim este de: "
-                      << p->get_Cantiate() << endl;
-            std::cout << "Doriti sa comandati alt produs sau doriti cantiatea ramasa de: " << p->get_Cantiate() << endl;
-            std::cout << "1.Alt Produs/2.Cantiatea ramasa" << endl;
-            string num;
-            int optiune_ = 0;
-            int can = 0;
-            std::cin >> optiune_;
-            switch (optiune_) {
-                case 1:
-                    std::cout << "Ce produs doriti sa comandati?" << endl;
+void Client_Pers_Fizic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) {
+    std::shared_ptr<Vanzator> vanz = cof.Get_Vanzator();
+    std::shared_ptr<Produs> p = vanz->Cautare_Produs(nume_, cof);
+    if (cantitate_ > p->get_Cantiate()) {
+        std::cout << "Nu avem destule produse pe stoc pentru aceasta comanda! Numarul maxim este de: "
+                  << p->get_Cantiate() << endl;
+        std::cout << "Doriti sa comandati alt produs sau doriti cantiatea ramasa de: " << p->get_Cantiate() << endl;
+        std::cout << "1.Alt Produs/2.Cantiatea ramasa" << endl;
+        int optiune_ = 0;
+        int can = 0;
+        std::cin >> optiune_;
+        switch (optiune_) {
+            case 1:
+                std::cout << "Ce produs doriti sa comandati?" << endl;
+                std::cout << "Nume produs: " << std::endl;
+                std::getline(std::cin, nume_);
+                std::getline(std::cin, nume_);
+                while (nume_.empty() || nume_.length() < 5) {
                     std::cout << "Nume produs: " << std::endl;
-                    std::cin >> num;
-                    std::cout << "Cantiatea dorita: " << std::endl;
-                    std::cin >> can;
-                    p = vanz1->Cautare_Produs(num, c);//vanzatorul cauta prod
-                    if (p == nullptr)
-                        throw null_ptr("Produsul cautat nu s-a gasit cand am facut cautarea produsului!");
-                    Comanda_Produs(p, can, a, c);
-                    break;
-                case 2:
-                    Comanda_Produs(p, p->get_Cantiate(), a, c);
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            vanz1->Lucreaza1(p, cantitate_);//aici vanzatorul vinde
-            Reducere_Comadna_Produs(p, cantitate_, c);
+                    std::getline(std::cin, nume_);
+                }
+                std::cout << "Cantiatea dorita: " << std::endl;
+                std::cin >> can;
+                p = vanz->Cautare_Produs(nume_, cof);
+                Comanda_Produs(nume_, can, cof);
+                break;
+            case 2:
+                Comanda_Produs(nume_, p->get_Cantiate(), cof);
+                break;
+            default:
+                break;
         }
+    } else {
+        vanz->Lucreaza1(p, cantitate_);
+        Reducere_Comadna_Produs(p, cantitate_, cof);
     }
 }
 
@@ -109,20 +107,18 @@ Client_Pers_Juridic::Client_Pers_Juridic(const string &Nume, int Numar_com, cons
 
 std::shared_ptr<Client> Client_Pers_Juridic::clone() const { return std::make_shared<Client_Pers_Juridic>(*this); }
 
-void
-Client_Pers_Juridic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
-                                    Cofetarie &c) {
+
+void Client_Pers_Juridic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) {
     if (cantitate_ < 30) {
         std::cout << "Comanda pe Persoana Juridica trebuie sa aiba minim 30 de bucati! " << endl;
         std::cout << "Doriti sa comandati contiuati cu mai mult de 30 de bucati? 1.Da/2.Nu " << endl;
         int optiune = 0;
-        int can = 0;
         std::cin >> optiune;
         switch (optiune) {
             case 1:
                 std::cout << "Ce cantiate doriti?: " << endl;
-                std::cin >> can;
-                Comanda_Produs(p, can, a, c);
+                std::cin >> cantitate_;
+                Comanda_Produs(nume_, cantitate_, cof);
                 break;
             case 2:
                 std::cout << "Va uram o zi buna! Va mai asteptam! " << endl;
@@ -132,14 +128,17 @@ Client_Pers_Juridic::Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, v
                 break;
         }
     } else {
+        std::shared_ptr<Vanzator> vanz = cof.Get_Vanzator();
+        std::shared_ptr<Cofetar> cofetar = cof.Get_Cofetar();
+        std::shared_ptr<Produs> p = vanz->Cautare_Produs(nume_, cof);
         if (cantitate_ > p->get_Cantiate()) {
-
             std::cout << "Nu avem cantitatea dorita, vom plasa comanda la cofetar! " << endl;
-            a[1]->Lucreaza1(p, cantitate_ - p->get_Cantiate());//aici cofetarul mai prepara produse
-            Comanda_Produs(p, cantitate_, a, c);
+            cofetar->Lucreaza1(p, cantitate_ - p->get_Cantiate());
+            cof.adauga_Cost((cantitate_ - p->get_Cantiate()) * p->Get_Cost_Productie());
+            Comanda_Produs(nume_, cantitate_, cof);
         } else {
-            a[0]->Lucreaza1(p, cantitate_);//aici vanzatorul vinde
-            Reducere_Comadna_Produs(p, cantitate_, c);
+            vanz->Lucreaza1(p, cantitate_);
+            Reducere_Comadna_Produs(p, cantitate_, cof);
         }
     }
 }

@@ -64,7 +64,6 @@ std::shared_ptr<Angajat> Cofetar::clone() const {
 void Cofetar::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
     std::cout << "Cofetarul prepara produsul: " << p->get_Nume() << " in cantiate de " << cantiate_ << endl;
     std::cout << "\n";
-    p->Set_Cost_Total(p->Get_Cost_Total() + cantiate_ * p->Get_Cost_Productie());
     Numar_Prajituri_Facute = Numar_Prajituri_Facute + p->get_Cantiate() + cantiate_;
     p->set_Cantitate(p->get_Cantiate() + cantiate_);
 }
@@ -159,7 +158,11 @@ void Vanzator::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
 }
 
 std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &c) {
-    return c.Cof_Cauta_Produs(nume);
+    std::shared_ptr<Produs> p = c.Cof_Cauta_Produs(nume);
+    if (p == nullptr)
+        throw produs_negasit("Nu s-a gasit produsul cu numele :" + nume);
+    else
+        return p;
 }
 
 

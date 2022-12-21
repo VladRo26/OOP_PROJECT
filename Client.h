@@ -14,6 +14,7 @@
 #include "Angajat.h"
 
 
+
 using std::endl;
 using std::string;
 using std::vector;
@@ -26,6 +27,7 @@ class Angajat;
 class Client {
 private:
     virtual void Client_afisare(std::ostream &) const {};
+
 protected:
     string Nume_Client;
     int Numar_Comenzi;
@@ -44,7 +46,7 @@ public:
     Client(const string &Nume_, int Numar_com_);
 
     virtual void
-    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a, Cofetarie &c) = 0;
+    Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) = 0;
     ///am nevoie de 2 angajati pentru o comanda unul bucatar unul vanzator
 
     virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) = 0;
@@ -65,8 +67,7 @@ public:
     std::shared_ptr<Client> clone() const override;
 
     void
-    Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
-                   Cofetarie &c) override;
+    Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) override;
 
     void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 };
@@ -85,8 +86,7 @@ public:
 
     std::shared_ptr<Client> clone() const override;
 
-    void Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, vector<std::shared_ptr<Angajat>> a,
-                        Cofetarie &c) override;
+    void Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) override;
 
     void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 

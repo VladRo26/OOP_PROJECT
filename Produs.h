@@ -28,7 +28,6 @@ protected:
     int Cantitate_Produs;
     vector<pair<Ingredient, int>> Ingrediente_Produs;
     float Cost_Productie;
-    static float Costuri_Totale_Produse;
 
     Produs(const Produs &other) = default;
 
