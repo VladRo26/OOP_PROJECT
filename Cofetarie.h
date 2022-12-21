@@ -41,7 +41,7 @@ public:
 //              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
 //              float Cifra_Afaceri_, float Costuri_);
 
-    Cofetarie(const string &Nume_Cofetarie_);
+    explicit Cofetarie(const string &Nume_Cofetarie_);
 
     Cofetarie(const Cofetarie &other);
 

@@ -21,7 +21,7 @@ Client_Pers_Fizic::Client_Pers_Fizic(const string &Nume_, int Numar_com, int Vec
 
 std::shared_ptr<Client> Client_Pers_Fizic::clone() const { return std::make_shared<Client_Pers_Fizic>(*this); }
 
-void Client_Pers_Fizic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) {
+void Client_Pers_Fizic::Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) {
     std::shared_ptr<Vanzator> vanz = cof.Get_Vanzator();
     std::shared_ptr<Produs> p = vanz->Cautare_Produs(nume_, cof);
     if (cantitate_ > p->get_Cantiate()) {
@@ -31,25 +31,24 @@ void Client_Pers_Fizic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &
         std::cout << "1.Alt Produs/2.Cantiatea ramasa" << endl;
         int optiune_ = 0;
         int can = 0;
+        string num = "";
         std::cin >> optiune_;
         switch (optiune_) {
             case 1:
                 std::cout << "Ce produs doriti sa comandati?" << endl;
                 std::cout << "Nume produs: " << std::endl;
-                std::getline(std::cin, nume_);
-                std::getline(std::cin, nume_);
-                while (nume_.empty() || nume_.length() < 5) {
+                std::getline(std::cin, num);
+                std::getline(std::cin, num);
+                while (num.empty() || num.length() < 5) {
                     std::cout << "Nume produs: " << std::endl;
-                    std::getline(std::cin, nume_);
+                    std::getline(std::cin, num);
                 }
 
                 std::cout << "Cantiatea dorita: " << std::endl;
                 std::cin >> can;
-                if (can < 1) {
+                if (can < 1)
                     throw eroare_cantitate("Cantiatea data nu poate fi negativa!!");
-                }
-                p = vanz->Cautare_Produs(nume_, cof);
-                Comanda_Produs(nume_, can, cof);
+                Comanda_Produs(num, can, cof);
                 break;
             case 2:
                 Comanda_Produs(nume_, p->get_Cantiate(), cof);
@@ -112,7 +111,7 @@ Client_Pers_Juridic::Client_Pers_Juridic(const string &Nume, int Numar_com, cons
 std::shared_ptr<Client> Client_Pers_Juridic::clone() const { return std::make_shared<Client_Pers_Juridic>(*this); }
 
 
-void Client_Pers_Juridic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &cof) {
+void Client_Pers_Juridic::Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) {
     if (cantitate_ < 30) {
         std::cout << "Comanda pe Persoana Juridica trebuie sa aiba minim 30 de bucati! " << endl;
         std::cout << "Doriti sa comandati contiuati cu mai mult de 30 de bucati? 1.Da/2.Nu " << endl;
