@@ -29,7 +29,7 @@ int main() {
 
         ///Declarare Angajati
         std::shared_ptr<Angajat> a1 = std::make_shared<Vanzator>("Vanzator", "Paniti", 0, 20000, 0, 0);
-        std::shared_ptr<Angajat> a2 = std::make_shared<Vanzator>("Cofetar", "Mihai", 1, 3500, 2, 100);
+        std::shared_ptr<Angajat> a2 = std::make_shared<Cofetar>("Cofetar", "Mihai", 1, 3500, 2, 100);
 
         ///Declarare Cofetarie
         Cofetarie cof("Bon-Bon");
@@ -53,6 +53,10 @@ int main() {
     } catch (produs_negasit &err) {
         std::cout << err.what() << endl;
     } catch (eroare_cantitate &err) {
+        std::cout << err.what() << endl;
+    } catch (eroare_cofetar &err) {
+        std::cout << err.what() << endl;
+    } catch (eroare_vanzator &err) {
         std::cout << err.what() << endl;
     }
 }

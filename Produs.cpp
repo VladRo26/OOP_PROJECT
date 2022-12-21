@@ -23,8 +23,8 @@ Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantia
           Cost_Productie(Cost_Productie_) {
 //    if (Pret <= 0 && Pret < Cost_Productie)
 //        throw eroare_constructor("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
-//    if (Cantiate_Produs_ <= 0)
-//        throw eroare_constructor("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
+    if (Cantiate_Produs_ <= 0)
+        throw eroare_cantitate("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
 }
 
 void Produs::Add_Ingredient(const Ingredient &ing_, int Cantiate_Ingredient_) {

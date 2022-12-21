@@ -67,7 +67,6 @@ std::shared_ptr<Produs> Cofetarie::Cof_Cauta_Produs(const string &nume) {
 }
 
 
-
 //float Cofetarie::Get_Cifra_Afaceri() {
 //    return Cifra_Afaceri;
 //}

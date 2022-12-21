@@ -42,8 +42,12 @@ void Client_Pers_Fizic::Comanda_Produs(string nume_, int cantitate_, Cofetarie &
                     std::cout << "Nume produs: " << std::endl;
                     std::getline(std::cin, nume_);
                 }
+
                 std::cout << "Cantiatea dorita: " << std::endl;
                 std::cin >> can;
+                if (can < 1) {
+                    throw eroare_cantitate("Cantiatea data nu poate fi negativa!!");
+                }
                 p = vanz->Cautare_Produs(nume_, cof);
                 Comanda_Produs(nume_, can, cof);
                 break;
