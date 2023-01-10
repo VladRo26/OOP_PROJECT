@@ -54,10 +54,6 @@ public:
 
     float Get_Cost_Productie();
 
-    static void Set_Cost_Total(float);
-
-    static float Get_Cost_Total();
-
     virtual void Descriere_Produs() = 0;
 
 };

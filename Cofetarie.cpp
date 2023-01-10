@@ -58,26 +58,6 @@ std::ostream &operator<<(std::ostream &os, const Cofetarie &cof) {
     return os;
 }
 
-std::shared_ptr<Produs> Cofetarie::Cof_Cauta_Produs(const string &nume) {
-    for (auto &prod: Produse) {
-        if (nume.compare(prod->get_Nume()) == 0)
-            return prod;
-    }
-    return nullptr;
-}
-
-
-//float Cofetarie::Get_Cifra_Afaceri() {
-//    return Cifra_Afaceri;
-//}
-
-//float Cofetarie::Get_Costuri() {
-//    return Costuri;
-//}
-
-//void Cofetarie::Set_Profit(float profit_) {
-//    Profit = profit_;
-//}
 
 void Cofetarie::Set_Cifra_Afaceri(float cifra_afaceri_) {
     Cifra_Afaceri = cifra_afaceri_;
@@ -118,5 +98,9 @@ std::shared_ptr<Cofetar> Cofetarie::Get_Cofetar() {
             return cof_;
     }
     throw eroare_cofetar("Nu s-a gasit niciun cofetar, printre angajatii confetariei!");
+}
+
+std::vector<std::shared_ptr<Produs>> &Cofetarie::Get_Produse() {
+    return Produse;
 }
 

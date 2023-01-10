@@ -158,11 +158,13 @@ void Vanzator::Lucreaza1(std::shared_ptr<Produs> p, int cantiate_) {
 }
 
 std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &c) {
-    std::shared_ptr<Produs> p = c.Cof_Cauta_Produs(nume);
-    if (p == nullptr)
-        throw produs_negasit("Nu s-a gasit produsul cu numele :" + nume);
-    else
-        return p;
+    auto &produse = c.Get_Produse();
+    for (auto &p: produse) {
+        if (nume.compare(p->get_Nume()) == 0) {
+            return p;
+        }
+    }
+    throw produs_negasit("Produsul cu numele de " + nume + " nu s-a gasit in cofetarie");
 }
 
 

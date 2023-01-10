@@ -50,7 +50,6 @@ public:
 
     void Cerere_Marire_Salariu(float procent_);
 
-//    static int Get_id();
 };
 
 class Cofetar : public Angajat {

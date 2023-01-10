@@ -49,7 +49,7 @@ public:
     Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) = 0;
     ///am nevoie de 2 angajati pentru o comanda unul bucatar unul vanzator
 
-    virtual void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) = 0;
+    virtual void Reducere_Comanda_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) = 0;
 
 };
 
@@ -66,10 +66,9 @@ public:
 
     std::shared_ptr<Client> clone() const override;
 
-    void
-    Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) override;
+    void Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) override;
 
-    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
+    void Reducere_Comanda_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 };
 
 class Client_Pers_Juridic : public Client {
@@ -88,7 +87,7 @@ public:
 
     void Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) override;
 
-    void Reducere_Comadna_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
+    void Reducere_Comanda_Produs(std::shared_ptr<Produs>, int, Cofetarie &c) override;
 
 };
 

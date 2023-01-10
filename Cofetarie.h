@@ -33,9 +33,11 @@ private:
     string Nume_Cofetarie;
     vector<std::shared_ptr<Angajat>> Angajati;
     vector<std::shared_ptr<Produs>> Produse;
-//    vector<std::shared_ptr<Client>> Clienti;
+    //vector<std::shared_ptr<Client>> Clienti;
     float Cifra_Afaceri;
     float Costuri;
+
+    float Get_Profit() const;
 public:
 //    Cofetarie(const string &Nume_Cofetarie_, vector<std::shared_ptr<Angajat>> Angajati_,
 //              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
@@ -51,23 +53,27 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Cofetarie &cof);
 
-    std::shared_ptr<Produs> Cof_Cauta_Produs(const string &nume);
-
     void Adauga_Ang(std::shared_ptr<Angajat>);
 
     void Adauga_Prod(std::shared_ptr<Produs>);
-
-    float Get_Profit() const;
-
-    void Set_Cifra_Afaceri(float cifra_afaceri_);
 
     std::shared_ptr<Vanzator> Get_Vanzator();
 
     std::shared_ptr<Cofetar> Get_Cofetar();
 
+    std::vector<std::shared_ptr<Produs>> &Get_Produse();
+
+    void Set_Cifra_Afaceri(float cifra_afaceri_);
+    //e publica deoarece e folosita in functia ReducereComanda din angajat
+
+
     void adauga_Cost(float cost_) {
         Costuri += cost_;
     }
+    // void Functii_Produs()
+    //{
+
+    //}
 
 };
 
