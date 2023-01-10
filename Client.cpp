@@ -62,7 +62,7 @@ void Client_Pers_Fizic::Comanda_Produs(const string &nume_, int cantitate_, Cofe
 
 void Client_Pers_Fizic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, Cofetarie &c) {
     float cifra_afaceri = 0;
-    float proc = 1;
+    double proc = 1;
     if (Vechime_Client >= 3 && Vechime_Client <= 5 && Numar_Comenzi >= 10 && Numar_Comenzi < 30) {
         std::cout << "Aveti o reducere de 10% pentru ca sunteti client fidel de nivelul 1! " << endl;
         proc = 0.9;
@@ -139,7 +139,7 @@ void Client_Pers_Juridic::Comanda_Produs(const string &nume_, int cantitate_, Co
 
 void Client_Pers_Juridic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, Cofetarie &c) {
     float cifra_afaceri = 0;
-    float proc = 1;
+    double proc = 1;
     if (cantitate_ > 40 && cantitate_ < 60 && Numar_Comenzi > 5 && Numar_Comenzi < 15) {
         std::cout
                 << "Deoarece numarul de produse comandate este intre 40 si 50 si numarul de comenzi este mai mare de 5, veti beneficia de o reducere de 20% "
