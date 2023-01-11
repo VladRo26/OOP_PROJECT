@@ -42,21 +42,17 @@ int main() {
         std::shared_ptr<Client> c1 = std::make_shared<Client_Pers_Fizic>("Willam", 29, 4);
         std::shared_ptr<Client> c2 = std::make_shared<Client_Pers_Juridic>("Vincenziu SRL", 100, "RKO10", 123,
                                                                            "Strada Napoli");
-
-
-        p1->Descriere_Produs();
-        c1->Comanda_Produs("savarina", 70, cof);
-        c2->Comanda_Produs("saratele", 60, cof);
-        a1->Cerere_Marire_Salariu(10);
-        a2->Cerere_Marire_Salariu(20);
-
-    } catch (produs_negasit &err) {
+        cof.Descriere_Produs("savarina");
+        cof.Marire_Salariu_Angajat("Paniti", 20);
+        cof.Marire_Salariu_Angajat("Mihai", 10);
+        cof.Client_Comanda(c1, "savarina", 10);
+        cof.Client_Comanda(c2, "saratele", 200);
+        std::cout << "Profitul cofetariei este:" << cof.Get_Profit();
+    } catch (eroare_pret &err) {
         std::cout << err.what() << endl;
-    } catch (eroare_cantitate &err) {
+    } catch (eroare_produs &err) {
         std::cout << err.what() << endl;
-    } catch (eroare_cofetar &err) {
-        std::cout << err.what() << endl;
-    } catch (eroare_vanzator &err) {
+    } catch (eroare_aplicatie &err) {
         std::cout << err.what() << endl;
     }
 }

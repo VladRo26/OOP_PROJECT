@@ -21,8 +21,8 @@ std::ostream &operator<<(std::ostream &os, const Produs &prod) {
 Produs::Produs(const string &Nume_Produs_, float Pret_, bool DePost_, int Cantiate_Produs_, float Cost_Productie_)
         : Nume_Produs(std::move(Nume_Produs_)), Pret(Pret_), DePost(DePost_), Cantitate_Produs(Cantiate_Produs_),
           Cost_Productie(Cost_Productie_) {
-//    if (Pret <= 0 && Pret < Cost_Productie)
-//        throw eroare_constructor("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
+    if (Pret <= 0 && Pret < Cost_Productie)
+        throw eroare_pret("Pretul pentru produs nu poate fi 0 sau mai mic decat costul productiei");
     if (Cantiate_Produs_ <= 0)
         throw eroare_cantitate("Cantitatea produsului nu poate fi mai mica sau egala cu 0");
 }

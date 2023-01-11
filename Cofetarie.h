@@ -37,13 +37,14 @@ private:
     float Cifra_Afaceri;
     float Costuri;
 
-    float Get_Profit() const;
 public:
 //    Cofetarie(const string &Nume_Cofetarie_, vector<std::shared_ptr<Angajat>> Angajati_,
 //              vector<std::shared_ptr<Produs>> Produse_, vector<std::shared_ptr<Client>> Clienti_, float Profit_,
 //              float Cifra_Afaceri_, float Costuri_);
 
     explicit Cofetarie(const string &Nume_Cofetarie_);
+
+    float Get_Profit() const;
 
     Cofetarie(const Cofetarie &other);
 
@@ -63,17 +64,15 @@ public:
 
     std::vector<std::shared_ptr<Produs>> &Get_Produse();
 
-    void Set_Cifra_Afaceri(float cifra_afaceri_);
-    //e publica deoarece e folosita in functia ReducereComanda din angajat
+    void Add_Cifra_Afaceri(float add);
 
+    void adauga_Cost(float cost_);
 
-    void adauga_Cost(float cost_) {
-        Costuri += cost_;
-    }
-    // void Functii_Produs()
-    //{
+    void Marire_Salariu_Angajat(const std::string &nume_, float proc);
 
-    //}
+    void Client_Comanda(const std::shared_ptr<Client> client_, const std::string &nume_, int cantitate_);
+
+    void Descriere_Produs(const std::string &nume_);
 
 };
 

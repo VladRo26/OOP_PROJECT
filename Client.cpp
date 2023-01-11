@@ -41,7 +41,6 @@ void Client_Pers_Fizic::Comanda_Produs(const string &nume_, int cantitate_, Cofe
                     std::cout << "Nume produs: " << std::endl;
                     std::getline(std::cin, num);
                 }
-
                 std::cout << "Cantiatea dorita: " << std::endl;
                 std::cin >> can;
                 if (can < 1)
@@ -61,7 +60,6 @@ void Client_Pers_Fizic::Comanda_Produs(const string &nume_, int cantitate_, Cofe
 }
 
 void Client_Pers_Fizic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, Cofetarie &c) {
-    float cifra_afaceri = 0;
     double proc = 1;
     if (Vechime_Client >= 3 && Vechime_Client <= 5 && Numar_Comenzi >= 10 && Numar_Comenzi < 30) {
         std::cout << "Aveti o reducere de 10% pentru ca sunteti client fidel de nivelul 1! " << endl;
@@ -76,8 +74,7 @@ void Client_Pers_Fizic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int c
         proc = 0.6;
     }
     std::cout << "Totalul de plata este: " << proc * (p->get_Pret() * float(cantitate_)) << endl;
-    cifra_afaceri = cifra_afaceri + proc * (p->get_Pret() * float(cantitate_));
-    c.Set_Cifra_Afaceri(cifra_afaceri);
+    c.Add_Cifra_Afaceri(proc * (p->get_Pret() * float(cantitate_)));
     std::cout << "\n";
     Numar_Comenzi++;
 }
@@ -138,7 +135,6 @@ void Client_Pers_Juridic::Comanda_Produs(const string &nume_, int cantitate_, Co
 }
 
 void Client_Pers_Juridic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, Cofetarie &c) {
-    float cifra_afaceri = 0;
     double proc = 1;
     if (cantitate_ > 40 && cantitate_ < 60 && Numar_Comenzi > 5 && Numar_Comenzi < 15) {
         std::cout
@@ -157,7 +153,6 @@ void Client_Pers_Juridic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int
         proc = 0.5;
     }
     std::cout << "Totalul de plata este: " << proc * (p->get_Pret() * float(cantitate_)) << endl;
-    cifra_afaceri = cifra_afaceri + proc * (p->get_Pret() * float(cantitate_));
-    c.Set_Cifra_Afaceri(cifra_afaceri);
+    c.Add_Cifra_Afaceri(proc * (p->get_Pret() * float(cantitate_)));
     Numar_Comenzi++;
 }

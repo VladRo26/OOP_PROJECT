@@ -48,6 +48,10 @@ bool Angajat::Eligibil_marire(float &proc_) {
     return 0;
 }
 
+const std::string &Angajat::Get_Nume() {
+    return Nume_Angajat;
+}
+
 void Cofetar::Angajat_afisare(std::ostream &os) const {
     os << "Numar Prajituri Facute: " << Numar_Prajituri_Facute << endl;
     os << "\n";
@@ -164,7 +168,7 @@ std::shared_ptr<Produs> Vanzator::Cautare_Produs(const string &nume, Cofetarie &
             return p;
         }
     }
-    throw produs_negasit("Produsul cu numele de " + nume + " nu s-a gasit in cofetarie");
+    throw eroare_produs("Produsul cu numele de " + nume + " nu s-a gasit in cofetarie");
 }
 
 

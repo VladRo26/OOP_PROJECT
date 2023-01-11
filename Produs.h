@@ -28,11 +28,8 @@ protected:
     int Cantitate_Produs;
     vector<pair<Ingredient, int>> Ingrediente_Produs;
     float Cost_Productie;
-
     Produs(const Produs &other) = default;
-
     Produs &operator=(const Produs &other) = default;
-
 public:
     virtual ~Produs() = default;
 
@@ -55,7 +52,6 @@ public:
     float Get_Cost_Productie();
 
     virtual void Descriere_Produs() = 0;
-
 };
 
 class Produs_Dulce : public Produs {

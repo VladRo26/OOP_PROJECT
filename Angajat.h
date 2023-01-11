@@ -50,6 +50,8 @@ public:
 
     void Cerere_Marire_Salariu(float procent_);
 
+    const std::string &Get_Nume();
+
 };
 
 class Cofetar : public Angajat {

@@ -10,24 +10,29 @@ class eroare_aplicatie : public std::runtime_error {
     using std::runtime_error::runtime_error;
 };
 
-class produs_negasit : public eroare_aplicatie {
+class eroare_produs : public eroare_aplicatie {
 public:
-    explicit produs_negasit(const std::string &string_) : eroare_aplicatie("Eroare produs negasit!   " + string_) {}
+    explicit eroare_produs(const std::string &string_) : eroare_aplicatie("Eroare produs! " + string_) {}
+};
+
+class eroare_client : public eroare_aplicatie {
+public:
+    explicit eroare_client(const std::string &string_) : eroare_aplicatie("Eroare client! " + string_) {}
 };
 
 class eroare_cantitate : public eroare_aplicatie {
 public:
-    explicit eroare_cantitate(const std::string &string_) : eroare_aplicatie("Eroare cantitate " + string_) {}
+    explicit eroare_cantitate(const std::string &string_) : eroare_aplicatie("Eroare cantitate! " + string_) {}
 };
 
-class eroare_vanzator : public eroare_aplicatie {
+class eroare_pret : public eroare_aplicatie {
 public:
-    explicit eroare_vanzator(const std::string &string_) : eroare_aplicatie("Eroare vanzator " + string_) {}
+    explicit eroare_pret(const std::string &string_) : eroare_aplicatie("Eroare pret! " + string_) {}
 };
 
-class eroare_cofetar : public eroare_aplicatie {
+class eroare_angajat : public eroare_aplicatie {
 public:
-    explicit eroare_cofetar(const std::string &string_) : eroare_aplicatie("Eroare cofetar " + string_) {}
+    explicit eroare_angajat(const std::string &string_) : eroare_aplicatie("Eroare agnajat " + string_) {}
 };
 
 

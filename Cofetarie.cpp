@@ -59,15 +59,9 @@ std::ostream &operator<<(std::ostream &os, const Cofetarie &cof) {
 }
 
 
-void Cofetarie::Set_Cifra_Afaceri(float cifra_afaceri_) {
-    Cifra_Afaceri = cifra_afaceri_;
-}
-
-
 float Cofetarie::Get_Profit() const {
     return Cifra_Afaceri - Costuri;
 }
-
 
 void Cofetarie::Adauga_Ang(std::shared_ptr<Angajat> ang_) {
     Angajati.push_back(ang_);
@@ -87,7 +81,7 @@ std::shared_ptr<Vanzator> Cofetarie::Get_Vanzator() {
         if (vanz_)
             return vanz_;
     }
-    throw eroare_vanzator("Nu s-a gasit niciun vanzator, printre angajatii confetariei!");
+    throw eroare_angajat("Nu s-a gasit niciun vanzator, printre angajatii confetariei!");
 }
 
 std::shared_ptr<Cofetar> Cofetarie::Get_Cofetar() {
@@ -97,10 +91,46 @@ std::shared_ptr<Cofetar> Cofetarie::Get_Cofetar() {
         if (cof_)
             return cof_;
     }
-    throw eroare_cofetar("Nu s-a gasit niciun cofetar, printre angajatii confetariei!");
+    throw eroare_angajat("Nu s-a gasit niciun cofetar, printre angajatii confetariei!");
 }
 
 std::vector<std::shared_ptr<Produs>> &Cofetarie::Get_Produse() {
     return Produse;
+}
+
+void Cofetarie::Add_Cifra_Afaceri(float add) {
+    Cifra_Afaceri = Cifra_Afaceri + add;
+}
+
+void Cofetarie::adauga_Cost(float cost_) {
+    Costuri += cost_;
+}
+
+void Cofetarie::Marire_Salariu_Angajat(const std::string &nume_, float proc) {
+    for (auto &ang: this->Angajati) {
+        if (ang->Get_Nume() == nume_) {
+            ang->Cerere_Marire_Salariu(proc);
+            return;
+        }
+    }
+    throw eroare_angajat("Nu s-a gasit angajatul printre angajatii cofetariei");
+}
+
+void Cofetarie::Client_Comanda(const std::shared_ptr<Client> client_, const string &nume_, int cantitate_) {
+    if (client_ != nullptr) {
+        client_->Comanda_Produs(nume_, cantitate_, *this);
+    } else {
+        throw eroare_client("Clientul dat nu exista!");
+    }
+}
+
+void Cofetarie::Descriere_Produs(const string &nume_) {
+    for (auto &prod: this->Produse) {
+        if (prod->get_Nume() == nume_) {
+            prod->Descriere_Produs();
+            return;
+        }
+    }
+    throw eroare_produs("Produsul dat nu exista!");
 }
 
