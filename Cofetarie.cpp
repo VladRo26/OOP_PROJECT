@@ -23,7 +23,7 @@ Cofetarie::Cofetarie(const Cofetarie &other) : Nume_Cofetarie(std::move(other.Nu
 //    }
 }
 
-Cofetarie &Cofetarie::operator<<(Cofetarie other) {
+Cofetarie &Cofetarie::operator=(Cofetarie other) {
     swap(*this, other);
     return *this;
 }

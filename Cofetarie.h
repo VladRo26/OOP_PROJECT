@@ -48,7 +48,7 @@ public:
 
     Cofetarie(const Cofetarie &other);
 
-    Cofetarie &operator<<(Cofetarie other);
+    Cofetarie &operator=(Cofetarie other);
 
     friend void swap(Cofetarie &c1, Cofetarie &c2);
 
