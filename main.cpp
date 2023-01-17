@@ -42,11 +42,13 @@ int main() {
         std::shared_ptr<Client> c1 = std::make_shared<Client_Pers_Fizic>("Willam", 29, 4);
         std::shared_ptr<Client> c2 = std::make_shared<Client_Pers_Juridic>("Vincenziu SRL", 100, "RKO10", 123,
                                                                            "Strada Napoli");
+        std::shared_ptr<Client> c3 = std::make_shared<Client_Special>("Iohanis",100,10,10);
         cof.Descriere_Produs("savarina");
         cof.Marire_Salariu_Angajat("Paniti", 20);
         cof.Marire_Salariu_Angajat("Mihai", 10);
         cof.Client_Comanda(c1, "savarina", 10);
         cof.Client_Comanda(c2, "saratele", 200);
+        cof.Client_Comanda(c3,"saratele",500);
         std::cout << "Profitul cofetariei este:" << cof.Get_Profit();
     } catch (eroare_pret &err) {
         std::cout << err.what() << endl;

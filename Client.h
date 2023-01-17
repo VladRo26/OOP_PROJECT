@@ -91,5 +91,23 @@ public:
 
 };
 
+class Client_Special:public Client{
+private:
+    int vechime=2;
+    int nivel_fidelitate=2;
+    void Client_afisare(std::ostream &os) const override;
+public:
+    Client_Special(const string &nume, int numarCom, int vechime, int nivelFidelitate);
+
+    std::shared_ptr<Client> clone() const override;
+
+    void Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) override;
+
+    void Reducere_Comanda_Produs(std::shared_ptr<Produs>, int cantitate_, Cofetarie &c) override;
+
+
+
+};
+
 
 #endif //OOP_CLIENT_H

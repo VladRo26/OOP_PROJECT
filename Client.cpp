@@ -156,3 +156,87 @@ void Client_Pers_Juridic::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int
     c.Add_Cifra_Afaceri(proc * (p->get_Pret() * float(cantitate_)));
     Numar_Comenzi++;
 }
+
+void Client_Special::Client_afisare(std::ostream &os) const {
+os<<"Vechime: "<<vechime<<endl;
+os<<"Nivel fidelitate: "<<nivel_fidelitate<<endl;
+}
+
+Client_Special::Client_Special(const string &nume, int numarCom, int vechime, int nivelFidelitate) : Client(nume,
+                                                                                                            numarCom),
+                                                                                                     vechime(vechime),
+                                                                                                     nivel_fidelitate(
+                                                                                                             nivelFidelitate) {}
+
+std::shared_ptr<Client> Client_Special::clone() const {
+    return std::make_shared<Client_Special>(*this);
+
+}
+
+void Client_Special::Comanda_Produs(const string &nume_, int cantitate_, Cofetarie &cof) {
+    std::shared_ptr<Vanzator> vanz = cof.Get_Vanzator();
+    std::shared_ptr<Produs> p = vanz->Cautare_Produs(nume_, cof);
+    if (cantitate_ > p->get_Cantiate()) {
+        std::cout << "Nu avem destule produse pe stoc pentru aceasta comanda! Numarul maxim este de: "
+                  << p->get_Cantiate() << endl;
+        std::cout << "Dar pentru ca sunteti un client special va vom onora comanda. Chiar acum cofetarul va prepara produsele in cel mai scurt timp" << endl;
+        std::shared_ptr<Cofetar> cofetar = cof.Get_Cofetar();
+        cofetar->Lucreaza1(p, cantitate_ - p->get_Cantiate());
+        cof.adauga_Cost((cantitate_ - p->get_Cantiate()) * p->Get_Cost_Productie());
+        Comanda_Produs(nume_, cantitate_, cof);
+    }
+    else
+    {
+        vanz->Lucreaza1(p, cantitate_);
+        Reducere_Comanda_Produs(p, cantitate_, cof);
+    }
+}
+
+void Client_Special::Reducere_Comanda_Produs(std::shared_ptr<Produs> p, int cantitate_, Cofetarie &c) {
+    double proc = 0.9;
+    if(cantitate_>=10 && cantitate_<=100)
+    {
+        if(vechime>=4 && vechime<=6 && nivel_fidelitate>=3 && nivel_fidelitate<=5)
+        {
+            std::cout << "Deoarece sunteti un client special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, veti primi 30% reducere";
+            proc=0.7;
+
+        }
+       else if(vechime >=6 && vechime<=10 && nivel_fidelitate>=5)
+        {
+            std::cout << "Deoarece sunteti un client special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, veti primi 40% reducere";
+            proc=0.6;
+        }
+       else if(vechime >=10 && nivel_fidelitate>=8)
+        {
+            std::cout << "Deoarece sunteti un client foarte special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, veti primi 60% reducere";
+            proc=0.4;
+        }
+        else {
+            std::cout << "Deoarece sunteti un client special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, veti primi 20% reducere";
+            proc = 0.8;
+        }
+    }
+    else if(cantitate_>=50)
+    {
+        if(vechime>=4 && vechime<=10 && nivel_fidelitate>=3 && nivel_fidelitate<=5) {
+            std::cout << "Deoarece sunteti un client special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, iar comanda este de peste 50 de bucati, veti primi 50% reducere";
+            proc = 0.5;
+        }
+        else if(vechime >=10 && nivel_fidelitate>=5)
+        {
+            std::cout << "Deoarece sunteti un client foarte special si aveti vechimea peste " << vechime
+                      << "si un nivel ridicat de fidelitate, iar comanda este de peste 50 de bucati, veti primi 60% reducere";
+            proc = 0.4;
+
+        }
+    }
+    std::cout << "Totalul de plata este: " << proc * (p->get_Pret() * float(cantitate_)) << endl;
+    c.Add_Cifra_Afaceri(proc * (p->get_Pret() * float(cantitate_)));
+    Numar_Comenzi++;
+}
